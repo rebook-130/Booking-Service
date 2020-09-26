@@ -8,10 +8,23 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js -w server -w database-mysql",
+    "react-dev": "webpack -d --watch"
   },
   "dependencies": {
+    "mongoose": "^5.10.7",
+    "react-dev": "0.0.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-react": "^7.21.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
