@@ -10,7 +10,8 @@ let calendarSchema = mongoose.Schema({
   maxGuest: Number,
   cleaningFee: Number,
   taxes: Number,
-  rating: Number
+  rating: Number,
+  booked: Boolean
 });
 
 let Calendar = mongoose.model('Calendar', calendarSchema);
@@ -28,7 +29,8 @@ let save = (singleDate) => {
     maxGuest: singleDate.maxGuest,
     cleaningFee: singleDate.cleaningFee,
     taxes: singleDate.taxes,
-    rating: singleDate.rating
+    rating: singleDate.rating,
+    booked: singleDate.booked
   });
 
   add.save((err) => {
@@ -41,9 +43,17 @@ let save = (singleDate) => {
 
 
 
-let get = (roomId, cb) => {
-  Calendar.find({ 'roomId': roomId }).exec((err, result) => { cb(err, result); });
+let get = (roomId, date, cb) => {
+  //Calendar.find({}).exec((err, result) => { cb(err, result); });
+  console.log(roomId, date);
+  Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
+};
+
+
+let deleteAll = () => {
+  Calendar.deleteMany({}, (err)=>{ console.log(err); }); // <- here the wa to clean the data base
 };
 
 module.exports.save = save;
 module.exports.get = get;
+module.exports.delete = deleteAll;
