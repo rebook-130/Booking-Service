@@ -8,11 +8,13 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "seed": "node database/seeding.js",
     "start": "node server/index.js",
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
     "react-dev": "webpack -d --watch"
   },
   "dependencies": {
+    "jquery": "^3.5.1",
     "mongoose": "^5.10.7",
     "react-dev": "0.0.1"
   },

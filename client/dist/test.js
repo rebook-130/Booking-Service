@@ -1,5 +1,4 @@
 
-
 var calend = function (date) {
   var day = date.getDate();
   var month = date.getMonth();
@@ -36,7 +35,10 @@ var calend = function (date) {
     if (dayOfTheWeek + 1 !== 1) {
       dayOfTheWeek--;
       inDay.innerHTML = '';
-    } else { inDay.innerHTML = j; j++; } //here is suppose to be elemrnt
+    } else {
+
+      inDay.innerHTML = j; j++;
+    } //here is suppose to be elemrnt
 
     p.appendChild(inDay);
     if (i % 7 === 1) { document.getElementsByClassName(monthNames[month])[0].appendChild(p); }

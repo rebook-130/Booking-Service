@@ -19,8 +19,29 @@ const db = require('./index.js');
 // {roomId: 3,date: 01-01-2020,price: 180,maxGuest: 3,cleaningFee: 100,taxes: 30,rating: 5.0},...
 //  ]
 
-for (var i = 0; i < 90; i++) {}
+
+var dayAmount = 90;
+
+//09-09-2020
 
 //
-db.save(eachSingleDate);
+db.delete();
+
+for (var j = 1; j <= 5; j++) {
+  for (var i = 0; i < dayAmount; i++) {
+    eachSingleDate = {};
+    eachSingleDate.roomId = j; //j
+    eachSingleDate.date = new Date(2020, 9, i);
+    eachSingleDate.price = 100 + Math.floor(Math.random() * 100);
+    eachSingleDate.maxGuest = 3;
+    eachSingleDate.cleaningFee = 40;
+    eachSingleDate.taxes = 50; //or calculete the tax basing on the price
+    eachSingleDate.rating = 4;
+    eachSingleDate.booked = Math.random() < 0.8 ? true : false;
+
+    db.save(eachSingleDate);
+  }
+}
+
+//
 //db.get('123', (err, result)=> console.log(result));
