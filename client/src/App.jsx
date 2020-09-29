@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import Dates from './Dates.jsx';
 class App extends React.Component {
 
   constructor(props) {
@@ -59,7 +59,7 @@ class App extends React.Component {
           $.ajax({
             method: 'GET',
             url: '/api/calendar?date=' + new Date(year, month, j),
-            success: result =>result.length !== 0 ? inDay.innerHTML = j + '<br>' + result[0].price : inDay.innerHTML = j
+            success: result =>result.length !== 0 && result[0].booked ? inDay.innerHTML = j + '<br>' + result[0].price + '$' : inDay.innerHTML = '<span class="grey">' + j + '<br> none</span>'
 
           });
 
@@ -83,28 +83,31 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
+  // componentDidMount() {
 
-    var date = new Date();
-    this.calend(date);
-    var date = new Date(date.getFullYear(), date.getMonth() + 2, 0);
-    this.calend(date);
+  //   var date = new Date();
+  //   this.calend(date);
+  //   var date = new Date(date.getFullYear(), date.getMonth() + 2, 0);
+  //   this.calend(date);
 
-  }
+  // }
 
 
   handleClick(value) {
-    console.log(this.state.count);
-    this.setState({ count: this.state.count + value }, () => {
+
+    this.setState({count: this.state.count + value});
+
+    // console.log(this.state.count);
+    // this.setState({ count: this.state.count + value }, () => {
 
 
-      document.getElementById('test').innerHTML = ''; //cleaning the form
-      var date = new Date();
-      console.log('here');
-      this.calend(new Date(date.getFullYear(), date.getMonth() + this.state.count, 0 ));
-      this.calend(new Date(date.getFullYear(), date.getMonth() + 1 + this.state.count, 0 ));
+    //   document.getElementById('test').innerHTML = ''; //cleaning the form
+    //   var date = new Date();
+    //   console.log('here');
+    //   this.calend(new Date(date.getFullYear(), date.getMonth() + this.state.count, 0 ));
+    //   this.calend(new Date(date.getFullYear(), date.getMonth() + 1 + this.state.count, 0 ));
 
-    });
+    // });
 
   }
 
@@ -116,6 +119,8 @@ class App extends React.Component {
         <div>Hello Calendar!</div>
         <button onClick={()=>this.handleClick(-1)}>{'<'}</button><button onClick={()=>this.handleClick(1)}>{'>'}</button>
         <div id="test"></div>
+        <Dates currentMonth = {this.state.count}/>
+
       </div>
     );
 
