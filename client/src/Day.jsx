@@ -12,7 +12,7 @@ class Day extends React.Component {
       <td>
         <div>
           <div>{this.props.day}</div>
-          <div>{this.props.data !== undefined ? this.props.data.price : 'none'}</div>
+          <div>{this.props.data !== undefined ? this.props.data.price : ''}</div>
         </div>
       </td>
     );

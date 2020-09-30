@@ -8,8 +8,22 @@ class Month extends React.Component {
 
     this.state = { data: []}; //here we need data for whole month (each day of month)
 
-    this.byClicking = this.byClicking.bind(this);
   }
+
+  componentDidUpdate(prevProps) {
+
+    if (this.props.currentMonth !== prevProps.currentMonth) {
+      var date = new Date();
+      var month = date.getMonth() + this.props.currentMonth;
+      console.log(month);
+      $.ajax({
+        method: 'GET',
+        url: '/api/calendar?month=' + month,
+        success: result => this.setState({data: result})
+      });
+    }
+  }
+
 
   componentDidMount() {
 
@@ -24,20 +38,14 @@ class Month extends React.Component {
 
   }
 
-  byClicking() {
 
-    var date = new Date();
-    var month = date.getMonth() + this.props.currentMonth;
-    console.log(month);
-    $.ajax({
-      method: 'GET',
-      url: '/api/calendar?month=' + month,
-      success: result => this.setState({data: result})
-    });
 
-  }
 
   render() {
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
     var date = new Date();
 
     var day = date.getDate();
@@ -55,7 +63,7 @@ class Month extends React.Component {
 
       if (dayOfTheWeek + 1 !== 1) {
         dayOfTheWeek--;
-        days.push(<Day day = {'X'}/>);
+        days.push(<Day day = {''}/>);
       } else {
         var data = this.state.data.filter(x=> x.day === j);
         days.push(<Day day = {j} data = {data[0]}/>);
@@ -68,13 +76,15 @@ class Month extends React.Component {
     }
 
     return (
-      <table class = 'M'>
 
-        <tbody>
-          <tr>{daysM}</tr>
-
-        </tbody>
-      </table>
+      <div>
+        <div> {monthNames[month % 12]}</div>
+        <table class = 'M'>
+          <tbody>
+            {daysM}
+          </tbody>
+        </table>
+      </div>
     );
 
   }
