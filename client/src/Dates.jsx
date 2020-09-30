@@ -11,8 +11,10 @@ class Dates extends React.Component {
 
     return (
       <div>
-        <Month currentMonth = {this.props.currentMonth}/>
-        <Month currentMonth = {this.props.currentMonth + 1}/>
+        <table>
+          <td><Month currentMonth = {this.props.currentMonth}/></td>
+          <td><Month currentMonth = {this.props.currentMonth + 1}/></td>
+        </table>
       </div>
     );
 

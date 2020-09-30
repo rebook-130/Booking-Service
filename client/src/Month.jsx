@@ -63,7 +63,7 @@ class Month extends React.Component {
 
       if (dayOfTheWeek + 1 !== 1) {
         dayOfTheWeek--;
-        days.push(<Day day = {''}/>);
+        days.push(<Day/>);
       } else {
         var data = this.state.data.filter(x=> x.day === j);
         days.push(<Day day = {j} data = {data[0]}/>);
