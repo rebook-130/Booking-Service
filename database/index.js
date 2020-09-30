@@ -6,6 +6,8 @@ let calendarSchema = mongoose.Schema({
 
   roomId: String,
   date: String,
+  month: Number,
+  day: Number,
   price: Number,
   maxGuest: Number,
   cleaningFee: Number,
@@ -25,6 +27,8 @@ let save = (singleDate) => {
   var add = new Calendar({
     roomId: singleDate.roomId,
     date: singleDate.date,
+    month: singleDate.month,
+    day: singleDate.day,
     price: singleDate.price,
     maxGuest: singleDate.maxGuest,
     cleaningFee: singleDate.cleaningFee,
@@ -43,10 +47,11 @@ let save = (singleDate) => {
 
 
 
-let get = (roomId, date, cb) => {
+let get = (roomId, month, cb) => {
   //Calendar.find({}).exec((err, result) => { cb(err, result); });
-  console.log(roomId, date);
-  Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
+  console.log(roomId, month);
+  Calendar.find({ 'roomId': roomId, 'month': month}).exec((err, result) => { cb(err, result); });
+  // Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
 };
 
 

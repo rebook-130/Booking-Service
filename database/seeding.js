@@ -4,6 +4,7 @@ const db = require('./index.js');
 
 // roomId: x.roomId,
 // date: x.date,
+// month: x.month
 // price: x.price,
 // maxGuest: x.maxGuest,
 // cleaningFee: x.cleaningFee,
@@ -29,9 +30,12 @@ db.delete();
 
 for (var j = 1; j <= 5; j++) {
   for (var i = 0; i < dayAmount; i++) {
+    var m = new Date(2020, 9, i);
     eachSingleDate = {};
     eachSingleDate.roomId = j; //j
-    eachSingleDate.date = new Date(2020, 9, i);
+    eachSingleDate.date = m;
+    eachSingleDate.month = m.getMonth();
+    eachSingleDate.day = m.getDate();
     eachSingleDate.price = 100 + Math.floor(Math.random() * 100);
     eachSingleDate.maxGuest = 3;
     eachSingleDate.cleaningFee = 40;

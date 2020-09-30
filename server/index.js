@@ -10,8 +10,8 @@ app.post('/api/calendar', function (req, res) {
 
 app.get('/api/calendar', function (req, res) {
   // db.save();
-  //console.log('hello',req.query);
-  db.get('2', req.query.date, (err, result)=> res.status(200).send(result));
+  console.log('hello', req.query);
+  db.get('2', req.query.month, (err, result)=> res.status(200).send(result));
   console.log('been invoked');
 });
 
