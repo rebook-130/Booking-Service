@@ -66,7 +66,7 @@ class Month extends React.Component {
         days.push(<Day/>);
       } else {
         var data = this.state.data.filter(x=> x.day === j);
-        days.push(<Day day = {j} data = {data[0]}/>);
+        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate}/>);
         j++;
       }
 

@@ -1,15 +1,19 @@
 import React from 'react';
 import $ from 'jquery';
 import Dates from './Dates.jsx';
+import Base from './Base.jsx';
 class App extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { count: 0 };
+    this.state = { count: 0, window: false, from: '10/11/2020', to: '11/10/2020', fromSet: false};
 
     this.calend = this.calend.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClickReserve = this.handleClickReserve.bind(this);
+
+    this.changeDate = this.changeDate.bind(this);
   }
 
 
@@ -111,15 +115,33 @@ class App extends React.Component {
 
   }
 
+  handleClickReserve() {
+    if (this.state.window === false) {
+      this.setState({window: this.state.window = true});
+    } else {
+      this.setState({window: this.state.window = false});
+    }
+  }
+
+  changeDate(fromTo) {
+    if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/--'}); this.setState({fromSet: true}); }
+    if (this.state.fromSet === true) { this.setState({to: fromTo}); this.setState({fromSet: false}); }
+
+  }
 
   render() {
+    var popUp;
+    if (this.state.window) { popUp = <Dates currentMonth = {this.state.count} changeDate = {this.changeDate} from = {this.state.from} to = {this.state.to} handleClick = {this.handleClick}/>; } else { popUp = 'pop-up window'; }
 
     return (
       <div>
         <div>Hello Calendar!</div>
-        <button onClick={()=>this.handleClick(-1)}>{'<'}</button><button onClick={()=>this.handleClick(1)}>{'>'}</button>
+
         <div id="test"></div>
-        <Dates currentMonth = {this.state.count}/>
+
+        <Base handleClickReserve = {this.handleClickReserve} from ={this.state.from} to = {this.state.to}/>
+
+        <div>{popUp}</div>
 
       </div>
     );

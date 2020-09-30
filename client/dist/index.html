@@ -2,21 +2,62 @@
 <html>
 
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
   <title>mInteger</title>
   <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 
 <style>
+  #price {
+    font-size:x-small
+  }
 
   #unavailible {
     text-decoration: line-through;
-    color:grey
+    color:rgb(177, 177, 177)
   }
   #day{
 height: 40px;
 width: 40px;
+font-family: Rubik;
+  }
+  #day:hover {
+    border: 2px solid black;
+    border-radius: 50%;
+  }
+
+  #base {
+height: 530px;
+width: 290px;
+border-radius: 10px;
+border: 1px solid rgb(201, 198, 198);
+  }
+
+  #baseForm {
+    border-radius: 10px;
+border: 1px solid rgb(201, 198, 198);
 
   }
+  #guest {
+
+    border: 1px solid rgb(201, 198, 198);
+  }
+
+  #popup {
+    background-color: #555;
+  color: white;
+  padding: 20px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  height: 470px;
+  width: 660px;
+
+  }
+
 </style>
 
 <body>
