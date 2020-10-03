@@ -12,21 +12,44 @@
     font-size:x-small
   }
 
-  #unavailible {
+  #dayN {
     text-decoration: line-through;
-    color:rgb(177, 177, 177)
+    color:rgb(177, 177, 177);
+    cursor:default;
+    height: 40px;
+  width: 40px;
+  font-family: Rubik;
+  padding: 2px;
+text-indent: 10px;
+border-radius: 50%;
+
   }
+
+
+
   #day{
 height: 40px;
 width: 40px;
 font-family: Rubik;
+padding: 2px;
+text-indent: 10px;
+border-radius: 50%;
+cursor: pointer;
   }
   #day:hover {
-    border: 2px solid black;
+    border: 1px solid black ;
     border-radius: 50%;
+    padding: 0px
+  }
+  #day:active {
+    background-color: rgb(0, 0, 0);
   }
 
+
   #base {
+    padding: 25px;
+  box-shadow : rgba(0, 0, 0, 0.12) 0px 6px 16px;
+font-family: Rubik;
 height: 530px;
 width: 290px;
 border-radius: 10px;
@@ -34,6 +57,8 @@ border: 1px solid rgb(201, 198, 198);
   }
 
   #baseForm {
+    margin-top: 45px;
+    margin-bottom: 15px;
     border-radius: 10px;
 border: 1px solid rgb(201, 198, 198);
 
@@ -44,20 +69,44 @@ border: 1px solid rgb(201, 198, 198);
   }
 
   #popup {
-    background-color: #555;
-  color: white;
+    box-shadow : rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    border-radius: 10px;
+    background-color: white;
+
   padding: 20px 20px;
   border: none;
-  cursor: pointer;
-  opacity: 0.8;
+  cursor:default;
   position: fixed;
-  bottom: 23px;
+  top: 23px;
   right: 28px;
-  height: 470px;
-  width: 660px;
+  height: 390px;
+  width: 700px;
 
   }
 
+  #button {
+    margin-left: 26px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border-radius: 10px;
+height: 50px;
+width: 235px;
+font-family: Rubik;
+font-size: medium;
+color: white;
+background-color: #e51f54;
+border: none;
+cursor: pointer
+  }
+  #button:focus {outline:0;}
+  #button:active {
+  background-color: #f13b6c;
+
+  transform: scale(0.99);
+}
+
+#basePrice {float:left; width: 50%; color: grey; font-size: 16px;}
+#baseRate {float: right; width:50%}
 </style>
 
 <body>

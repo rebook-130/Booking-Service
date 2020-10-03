@@ -55,7 +55,7 @@ class Month extends React.Component {
     var dayInMonth = new Date(year, month + 1, 0).getDate();
     var dayOfTheWeek = new Date(year, month, 1).getDay();
     var s = dayOfTheWeek;
-
+    var x = 0;
     var days = [];
     var daysM = [];
     var j = 1;
@@ -66,7 +66,7 @@ class Month extends React.Component {
         days.push(<Day/>);
       } else {
         var data = this.state.data.filter(x=> x.day === j);
-        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate}/>);
+        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter}/>);
         j++;
       }
 
@@ -74,6 +74,7 @@ class Month extends React.Component {
       if (i % 7 === 0 || i === dayInMonth + s) { daysM.push(<tr>{days}</tr>); days = []; }
 
     }
+
 
     return (
 

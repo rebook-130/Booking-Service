@@ -9,7 +9,6 @@ class App extends React.Component {
 
     this.state = { count: 0, window: false, from: '10/11/2020', to: '11/10/2020', fromSet: false};
 
-    this.calend = this.calend.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleClickReserve = this.handleClickReserve.bind(this);
 
@@ -17,75 +16,7 @@ class App extends React.Component {
   }
 
 
-  calend(date) {
-    console.log(date + '<--------');
 
-    var day = date.getDate();
-    var month = date.getMonth();
-    var year = date.getFullYear();
-
-    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-
-    var dayInMonth = new Date(year, month + 1, 0).getDate();
-
-    var dayOfTheWeek = new Date(year, month, 1).getDay();
-    console.log(dayOfTheWeek);
-
-    var s = dayOfTheWeek;
-
-    var j = 1;
-
-    var monthFirst = document.createElement('table');
-    monthFirst.className = monthNames[month];
-
-    var m = document.createElement('div'); ////
-    m.innerHTML = monthNames[month] + ' ' + year;
-    console.log(document);
-    document.getElementById('test').appendChild(m);
-    document.getElementById('test').appendChild(monthFirst);
-
-    for (var i = 1; i <= dayInMonth + s; i++) {
-
-      if (i % 7 === 1) { var p = document.createElement('tr'); }
-
-      var inDay = document.createElement('td');
-
-      if (dayOfTheWeek + 1 !== 1) {
-        dayOfTheWeek--;
-        inDay.innerHTML = '';
-      } else {
-
-
-        (function (j, inDay) {
-        // console.log(new Date(year, month, j));
-          $.ajax({
-            method: 'GET',
-            url: '/api/calendar?date=' + new Date(year, month, j),
-            success: result =>result.length !== 0 && result[0].booked ? inDay.innerHTML = j + '<br>' + result[0].price + '$' : inDay.innerHTML = '<span class="grey">' + j + '<br> none</span>'
-
-          });
-
-        })(j, inDay);
-
-
-        //inDay.innerHTML = j;
-        j++;
-
-      } //here is suppose to be elemrnt
-
-      p.appendChild(inDay);
-      if (i % 7 === 1) { document.getElementsByClassName(monthNames[month])[0].appendChild(p); }
-
-    }
-
-
-    //document.getElementById('test').innerHTML = item;
-    //document.getElementsByClassName('calendar')[0].innerHTML = itemQ;
-    console.log(day, month, dayInMonth);
-
-  }
 
   // componentDidMount() {
 
@@ -98,21 +29,7 @@ class App extends React.Component {
 
 
   handleClick(value) {
-
     this.setState({count: this.state.count + value});
-
-    // console.log(this.state.count);
-    // this.setState({ count: this.state.count + value }, () => {
-
-
-    //   document.getElementById('test').innerHTML = ''; //cleaning the form
-    //   var date = new Date();
-    //   console.log('here');
-    //   this.calend(new Date(date.getFullYear(), date.getMonth() + this.state.count, 0 ));
-    //   this.calend(new Date(date.getFullYear(), date.getMonth() + 1 + this.state.count, 0 ));
-
-    // });
-
   }
 
   handleClickReserve() {
@@ -131,11 +48,15 @@ class App extends React.Component {
 
   render() {
     var popUp;
-    if (this.state.window) { popUp = <Dates currentMonth = {this.state.count} changeDate = {this.changeDate} from = {this.state.from} to = {this.state.to} handleClick = {this.handleClick}/>; } else { popUp = 'pop-up window'; }
+    if (this.state.window) {
+      popUp = <Dates currentMonth = {this.state.count}
+        changeDate = {this.changeDate} from = {this.state.from} to = {this.
+          state.to} handleClick = {this.handleClick}/>;
+    } else { popUp = ''; }
 
     return (
       <div>
-        <div>Hello Calendar!</div>
+
 
         <div id="test"></div>
 
