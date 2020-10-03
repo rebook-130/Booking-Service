@@ -5,10 +5,14 @@ class Day extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {toggle: 0, from: ''};
+    this.state = {toggle: 0, from: '',
+      bgColor: 'white', bgColorT: '', id: undefined};
 
     this.sendDayFrom = this.sendDayFrom.bind(this);
+    this.boxClick = this.boxClick.bind(this);
+
   }
+
 
 
   sendDayFrom() {
@@ -19,27 +23,61 @@ class Day extends React.Component {
     this.props.changeDate(r);
 
 
-
-
     //toggle if once was clicked set second date
   }
+
+  boxClick() {
+    if (this.state.bgColor === 'white') {
+      this.setState({
+        bgColor: 'black',
+        bgColorT: 'white',
+        id: this.props.data._id
+      });
+    } else {
+      this.setState({
+        bgColor: 'white',
+        bgColorT: 'black',
+        id: this.props.data._id
+
+      });
+    }
+  }
+
+
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== undefined && prevProps.data !== undefined) {
+      if (this.props.data._id !== prevProps.data._id) {
+        this.setState({bgColor: 'white', bgColorT: 'black'});
+      }
+    }
+
+  }
+
+
 
   render() {
     var c;
     var dat = [];
     if (this.props.data !== undefined && this.props.data.booked) {
-
-      dat.push(<div id = "availible">
-        <div>{this.props.day}</div>
-        <div id ="price">{this.props.data !== undefined ? this.props.data.price + '$' : ''}</div>
-      </div>);
+      dat.push(
+        <div id = "day" style={{backgroundColor: this.state.bgColor, color: this.state.bgColorT}} onClick={()=> { this.sendDayFrom(); this.boxClick(); } } >
+          <div id = "availible">
+            <div>{this.props.day}</div>
+            <div id ="price">{this.props.data !== undefined ? this.props.data.price + '$' : ''}</div>
+          </div>
+        </div>
+      );
 
 
     } else {
-      dat.push(<div id = "unavailible">
-        <div>{this.props.day}</div>
-        <div id ="price">{this.props.data !== undefined ? this.props.data.price + '$' : ''}</div>
-      </div>);
+      dat.push(
+        <div id = "dayN" >
+          <div id = "unavailible">
+            <div>{this.props.day}</div>
+            <div id ="price">{this.props.data !== undefined ? this.props.data.price + '$' : ''}</div>
+          </div>
+        </div>
+      );
     }
 
 
@@ -47,8 +85,12 @@ class Day extends React.Component {
 
     return (
       <td>
-        <div id = "day" onClick={()=>this.sendDayFrom()} >
+        <div id = 'borderDay'>
+
+
           {dat}
+
+
         </div>
       </td>
     );

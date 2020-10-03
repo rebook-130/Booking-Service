@@ -55,7 +55,7 @@ class Month extends React.Component {
     var dayInMonth = new Date(year, month + 1, 0).getDate();
     var dayOfTheWeek = new Date(year, month, 1).getDay();
     var s = dayOfTheWeek;
-
+    var x = 0;
     var days = [];
     var daysM = [];
     var j = 1;
@@ -74,6 +74,7 @@ class Month extends React.Component {
       if (i % 7 === 0 || i === dayInMonth + s) { daysM.push(<tr>{days}</tr>); days = []; }
 
     }
+
 
     return (
 

@@ -5,10 +5,19 @@ class Dates extends React.Component {
 
   constructor(props) {
     super(props);
+
+
   }
 
 
+
+
+
   render() {
+
+
+    var s = <Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate}/>;
+    var e = <Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate}/>;
 
     return (
       <div id = 'popup'>
@@ -17,8 +26,8 @@ class Dates extends React.Component {
 
         <button onClick={()=>this.props.handleClick(-1)}>{'<'}</button><button onClick={()=>this.props.handleClick(1)}>{'>'}</button>
         <table>
-          <td><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate}/></td>
-          <td><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate}/></td>
+          <td>{s}</td>
+          <td>{e}</td>
         </table>
       </div>
     );

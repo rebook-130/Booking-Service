@@ -24,16 +24,17 @@ class Base extends React.Component {
 
   render() {
 
-
+    console.log(this.props.from, this.props.to); //by using Data()
     return (
       <div id = "base">
 
-        <div id = 'basePrice'>{this.state.data[0] ? '$' + this.state.data[0].price + '/night' : <div>loading...</div>}</div>
-        <div id = 'baseRate'>3.10stars(HC)</div>
-
+        <div>
+          <div id = 'basePrice'>{this.state.data[0] ? <div><span style = {{fontSize: '22px', color: 'black'}}>$ {this.state.data[0].price}</span>/night</div> : <div>loading...</div>}</div>
+          <div id = 'baseRate'>3.10stars(HC)</div>
+        </div>
         <BaseForm from = {this.props.from} to = {this.props.to}/>
         <div id = 'guest'> 1 guest(HC)</div>
-        <button onClick={()=>this.props.handleClickReserve()}>{'Reserve'}</button>
+        <button id = 'button' onClick={()=>this.props.handleClickReserve()}>{'Reserve'}</button>
 
         <div id = 'amountDays'>$60x3 $180 (HC)</div>
         <div id = 'cleaningFee'> Cleaning Fee $20(HC)</div>
