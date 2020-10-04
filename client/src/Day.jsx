@@ -27,7 +27,7 @@ class Day extends React.Component {
   }
 
   boxClick() {
-    this.props.clickCounter();
+    this.props.clickCounter(1);
     console.log(this.props.counter);
     if (this.state.bgColor === 'white' && this.props.counter <= 1) {
       this.sendDayFrom();
@@ -44,6 +44,11 @@ class Day extends React.Component {
 
       });
     }
+
+    if (this.props.counter === 2) {
+      this.props.clickCounter(0);
+    }
+
   }
 
 

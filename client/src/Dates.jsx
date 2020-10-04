@@ -12,8 +12,9 @@ class Dates extends React.Component {
   }
 
 
-  clickCounter() {
-    this.setState({counter: this.state.counter + 1});
+  clickCounter(n) {
+    this.setState({counter: this.state.counter + n});
+    if (n === 0) { this.setState({counter: 0}); }
   }
 
 

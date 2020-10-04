@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700&display=swap" rel="stylesheet">
   <title>mInteger</title>
   <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
@@ -18,7 +18,7 @@
     cursor:default;
     height: 40px;
   width: 40px;
-  font-family: Rubik;
+  font-family: Montserrat;
   padding: 2px;
 text-indent: 10px;
 border-radius: 50%;
@@ -30,7 +30,7 @@ border-radius: 50%;
   #day{
 height: 40px;
 width: 40px;
-font-family: Rubik;
+font-family: Montserrat;
 padding: 2px;
 text-indent: 10px;
 border-radius: 50%;
@@ -47,25 +47,29 @@ cursor: pointer;
 
 
   #base {
+    margin: 25px;
     padding: 25px;
   box-shadow : rgba(0, 0, 0, 0.12) 0px 6px 16px;
-font-family: Rubik;
+font-family: Montserrat;
 height: 530px;
-width: 290px;
+width: 240px;
 border-radius: 10px;
-border: 1px solid rgb(201, 198, 198);
+border: 1px solid rgb(224, 222, 222);
   }
 
   #baseForm {
-    margin-top: 45px;
-    margin-bottom: 15px;
+
+
     border-radius: 10px;
-border: 1px solid rgb(201, 198, 198);
 
   }
-  #guest {
-
-    border: 1px solid rgb(201, 198, 198);
+  #baseFormWrapper {
+    margin-top: 50px;
+    border-top: 1px solid rgb(201, 198, 198);
+    border-left: 1px solid rgb(201, 198, 198);
+    border-right: 1px solid rgb(201, 198, 198);
+    border-bottom: 1px solid rgb(201, 198, 198);
+    border-radius: 10px;
   }
 
   #popup {
@@ -79,19 +83,20 @@ border: 1px solid rgb(201, 198, 198);
   position: fixed;
   top: 23px;
   right: 28px;
-  height: 390px;
+  height: 400px;
   width: 700px;
 
   }
 
   #button {
-    margin-left: 26px;
+
+margin-left: 2px;
     margin-top: 13px;
     margin-bottom: 13px;
     border-radius: 10px;
 height: 50px;
 width: 235px;
-font-family: Rubik;
+font-family: Montserrat;
 font-size: medium;
 color: white;
 background-color: #e51f54;
@@ -101,12 +106,58 @@ cursor: pointer
   #button:focus {outline:0;}
   #button:active {
   background-color: #f13b6c;
-
   transform: scale(0.99);
+
 }
+  #button:hover{
+
+
+    --x: 0px;
+    --y: 0px;
+    background-color: rgb(189, 30, 89);
+    background-image:radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%) ;
+
+
+    background-position: var(--x) var(--y);
+    background-repeat:repeat-y
+  }
 
 #basePrice {float:left; width: 50%; color: grey; font-size: 16px;}
-#baseRate {float: right; width:50%}
+#baseRate {float: right; width:50% ; text-align: right; font-size: 13px; margin-top: 5px;}
+
+#checkIn{ padding: 10px; font-size: 10px;width:40%; display:inline-block;
+   }
+
+#checkOut{padding: 10px; padding-left: 20px; font-size: 10px; width:35% ;display:inline-block;}
+
+
+#baseFormHover{
+  background-image: linear-gradient(rgb(201, 198, 198), rgb(201, 198, 198));
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 2px;
+  cursor: pointer;
+
+}
+
+#baseFormHover:hover {
+  padding: 0px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+  #guest{
+
+    font-size: 10px;
+    width: auto;
+    border-top: 1px solid rgb(201, 198, 198);
+    padding: 10px;
+  }
+
+  #leftList {display:inline;}
+  #rightList {display:inline-flex ; float: right;}
+
 </style>
 
 <body>
