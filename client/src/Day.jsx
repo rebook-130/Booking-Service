@@ -27,7 +27,7 @@ class Day extends React.Component {
   }
 
   boxClick() {
-    this.props.clickCounter();
+    this.props.clickCounter(1);
     console.log(this.props.counter);
     if (this.state.bgColor === 'white' && this.props.counter <= 1) {
       this.sendDayFrom();
@@ -44,6 +44,12 @@ class Day extends React.Component {
 
       });
     }
+
+    if (this.props.counter === 2) {
+
+      this.props.clickCounter(0);
+    }
+
   }
 
 
@@ -64,8 +70,8 @@ class Day extends React.Component {
     if (this.props.data !== undefined && this.props.data.booked) {
       dat.push(
         <div id = "day" style={{backgroundColor: this.state.bgColor, color: this.state.bgColorT}} onClick={()=> { this.boxClick(); } } >
-          <div id = "availible">
-            <div>{this.props.day}</div>
+          <div id = "availiable">
+            <div id = 'thisDay'>{this.props.day}</div>
             <div id ="price">{this.props.data !== undefined ? this.props.data.price + '$' : ''}</div>
           </div>
         </div>
@@ -88,13 +94,13 @@ class Day extends React.Component {
 
     return (
       <td>
-        <div id = 'borderDay'>
 
 
-          {dat}
+
+        {dat}
 
 
-        </div>
+
       </td>
     );
 

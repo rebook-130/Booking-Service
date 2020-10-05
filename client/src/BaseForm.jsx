@@ -9,11 +9,17 @@ class BaseForm extends React.Component {
 
 
   render() {
+    if (this.props.handleClickReserve !== undefined) { var x = this.props.handleClickReserve; } else { var x = () => { console.log('here'); }; }
 
     return (
       <div>
-        <div id = 'baseForm' onClick={()=>this.props.handleClickReserve()}> <div> <b>Check-in</b> {this.props.from}</div>
-          <div> <b>Checkout</b> {this.props.to}</div>
+        <div id = 'baseForm' onClick={()=>x()}>
+
+          <div id = 'checkIn'> <b>CHECK-IN</b> <span style = {{fontWeight: 300, fontSize: '17px'}}><br />  {this.props.from}</span> </div>
+          <div id = 'checkOut'> <b>CHECKOUT</b><span style = {{fontWeight: 300, fontSize: '17px'}}><br /> {this.props.to}</span></div>
+
+
+
         </div>
       </div>
     );
