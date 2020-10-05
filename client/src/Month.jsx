@@ -80,7 +80,9 @@ class Month extends React.Component {
 
       <div>
         {/* <div> {monthNames[month % 12]}</div> */}
-        <table class = 'M'>
+        <table id = 'dayWeek'><td> Su</td><td> Mo</td><td> Tu </td><td>We</td><td> Th</td><td> Fr</td><td> Sa</td></table>
+
+        <table id = 'M'>
           <tbody>
             {daysM}
           </tbody>

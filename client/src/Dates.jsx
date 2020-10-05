@@ -30,30 +30,34 @@ class Dates extends React.Component {
 
     return (
       <div id = 'popup'>
+        <div id = 'header'>
+          <div id = 'dates'>
+            <div id = 'baseFormWrapperDates'>
 
-        <div id = 'dates'>
-          <div id = 'baseFormWrapperDates'>
+              <div id = 'baseFormHover'>
 
-            <div id = 'baseFormHover'>
-
-              <BaseForm from = {this.props.from} to = {this.props.to}/>
-            </div></div>
+                <BaseForm from = {this.props.from} to = {this.props.to}/>
+              </div></div>
+          </div>
         </div>
 
         <div id ='monthLine'>
-          <button id = 'buttonLeft' onClick={()=>this.props.handleClick(-1)}>{'<'}</button>
+          <button id = 'buttonSwipe' onClick={()=>this.props.handleClick(-1)}>{'<'}</button>
 
           <div id = 'monthLeft'>{monthNames[month % 12] + '  ' + dateYear1.getFullYear()}</div>
 
           <div id = 'monthRight'>{monthNames[(month + 1) % 12] + '  ' + dateYear2.getFullYear() }</div>
 
-          <button id = 'buttonRight' onClick={()=>this.props.handleClick(1)}>{'>'}</button>
+          <button id = 'buttonSwipe' onClick={()=>this.props.handleClick(1)}>{'>'}</button>
         </div>
 
-        <table>
-          <td><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></td>
-          <td><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></td>
-        </table>
+        <div id = 'twoMonth'>
+
+          <div id ="firstMonth"><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></div>
+
+          <div id ="secondMonth"><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></div>
+        </div>
+
       </div>
     );
 
