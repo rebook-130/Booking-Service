@@ -51,24 +51,28 @@ cursor: pointer;
     padding: 25px;
   box-shadow : rgba(0, 0, 0, 0.12) 0px 6px 16px;
 font-family: Montserrat;
-height: 530px;
+height: 490px;
 width: 240px;
 border-radius: 10px;
 border: 1px solid rgb(224, 222, 222);
   }
 
   #baseForm {
-
-
     border-radius: 10px;
-
+    width: 240px;
   }
+
   #baseFormWrapper {
+    font-family: Montserrat;
     margin-top: 50px;
-    border-top: 1px solid rgb(201, 198, 198);
-    border-left: 1px solid rgb(201, 198, 198);
-    border-right: 1px solid rgb(201, 198, 198);
-    border-bottom: 1px solid rgb(201, 198, 198);
+    border: 1px solid rgb(201, 198, 198);
+    border-radius: 10px;
+  }
+
+  #baseFormWrapperDates {
+    font-family: Montserrat;
+
+    border: 1px solid rgb(201, 198, 198);
     border-radius: 10px;
   }
 
@@ -101,7 +105,7 @@ font-size: medium;
 color: white;
 background-color: #e51f54;
 border: none;
-cursor: pointer
+cursor: pointer;
   }
   #button:focus {outline:0;}
   #button:active {
@@ -119,7 +123,7 @@ cursor: pointer
 
 
     background-position: var(--x) var(--y);
-    background-repeat:repeat-y
+    background-repeat:repeat-y;
   }
 
 #basePrice {float:left; width: 50%; color: grey; font-size: 16px;}
@@ -153,11 +157,57 @@ cursor: pointer
     width: auto;
     border-top: 1px solid rgb(201, 198, 198);
     padding: 10px;
+    cursor: pointer;
   }
 
-  #leftList {display:inline;}
-  #rightList {display:inline-flex ; float: right;}
+  #leftList {display:inline-flex; width: 70%; text-decoration: underline;}
 
+  #rightList {display:inline-flex ;  width: 30%;
+}
+
+  #leftListTotal {display:inline-flex; width: 70%;}
+  #rightListTotal {display:inline-flex ;  width: 30%;}
+
+#total {padding-top: 25px; margin-top: 20px;
+  border-top: 1px solid rgb(201, 198, 198);
+
+}
+
+  #elementList{
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: 300;
+    display: flex
+  }
+
+#messageAlert{ text-align: center;}
+
+
+#dates{
+
+  width: 240px;
+}
+
+
+#monthLine {
+  padding: 20px;
+  height: 25px;
+  display: inline-flex;
+}
+
+
+
+#monthLeft {
+  font-family: Montserrat;
+  width: 320px;
+  text-align: center;
+}
+
+#monthRight {
+  font-family: Montserrat;
+  width: 300px;
+  text-align: center;
+}
 </style>
 
 <body>

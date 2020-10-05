@@ -19,20 +19,40 @@ class Dates extends React.Component {
 
 
   render() {
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    var date = new Date();
+    var month = date.getMonth() + this.props.currentMonth;
 
-
-    var s = <Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/>;
-    var e = <Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/>;
+    var dateYear1 = new Date(date.getFullYear(), month + 1, 0);
+    var dateYear2 = new Date(date.getFullYear(), month + 2, 0);
 
     return (
       <div id = 'popup'>
 
-        <BaseForm from = {this.props.from} to = {this.props.to}/>
+        <div id = 'dates'>
+          <div id = 'baseFormWrapperDates'>
 
-        <button onClick={()=>this.props.handleClick(-1)}>{'<'}</button><button onClick={()=>this.props.handleClick(1)}>{'>'}</button>
+            <div id = 'baseFormHover'>
+
+              <BaseForm from = {this.props.from} to = {this.props.to}/>
+            </div></div>
+        </div>
+
+        <div id ='monthLine'>
+          <button id = 'buttonLeft' onClick={()=>this.props.handleClick(-1)}>{'<'}</button>
+
+          <div id = 'monthLeft'>{monthNames[month % 12] + '  ' + dateYear1.getFullYear()}</div>
+
+          <div id = 'monthRight'>{monthNames[(month + 1) % 12] + '  ' + dateYear2.getFullYear() }</div>
+
+          <button id = 'buttonRight' onClick={()=>this.props.handleClick(1)}>{'>'}</button>
+        </div>
+
         <table>
-          <td>{s}</td>
-          <td>{e}</td>
+          <td><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></td>
+          <td><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></td>
         </table>
       </div>
     );

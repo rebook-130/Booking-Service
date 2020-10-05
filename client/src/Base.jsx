@@ -48,20 +48,35 @@ class Base extends React.Component {
 
 
           <div id = 'guest'><b>GUESTS</b><span style = {{fontWeight: 300, fontSize: '17px'}}><br /> 2 guests </span>
+
           </div>
 
         </div>
 
         <button id = 'button' onClick={()=>this.props.handleClickReserve()}>{'Reserve'}</button>
 
-        <div id = 'amountDays'>  <div id = 'leftList'>$60x3</div> <div id = 'rightList'>  $180 (HC) </div> </div>
-        <div id = 'cleaningFee'>  <div id = 'leftList'>Cleaning Fee</div> <div id = 'rightList'>  $20(HC) </div> </div>
-        <div id = 'serviceFee'>  <div id = 'leftList'>Service Fee</div> <div id = 'rightList'>  $30(HC) </div> </div>
-        <div id = 'occupancyFee'>  <div id = 'leftList'>Occupancy taxes and fees</div> <div id = 'rightList'>  $30(HC) </div> </div>
+        <div id = 'messageAlert'><span style = {{fontWeight: 300, fontSize: '14px'}}>You won't be charged yet</span></div>
 
+        <div id = 'elementList'>
+          <div id = 'leftList'>$60x3</div>
+          <div id = 'rightList'>$180(HC)</div> </div>
 
+        <div id = 'elementList'>
+          <div id = 'leftList'>Cleaning Fee</div>
+          <div id = 'rightList'>$20(HC)</div> </div>
 
-        <div id = 'total'>Total $300(HC) </div>
+        <div id = 'elementList'>
+          <div id = 'leftList'>Service Fee</div>
+          <div id = 'rightList'>$30(HC)</div> </div>
+
+        <div id = 'elementList'>
+          <div id = 'leftList'>Occupancy taxes and fees</div>
+          <div id = 'rightList'>$30(HC)</div> </div>
+
+        <div id = 'total'>
+          <div id = 'leftListTotal'>Total</div>
+          <div id = 'rightListTotal'>  $300(HC) </div>
+        </div>
       </div>
 
     );

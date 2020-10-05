@@ -42,9 +42,9 @@ class Month extends React.Component {
 
 
   render() {
-    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
+    // var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    //   'July', 'August', 'September', 'October', 'November', 'December'
+    // ];
 
     var date = new Date();
 
@@ -79,7 +79,7 @@ class Month extends React.Component {
     return (
 
       <div>
-        <div> {monthNames[month % 12]}</div>
+        {/* <div> {monthNames[month % 12]}</div> */}
         <table class = 'M'>
           <tbody>
             {daysM}
