@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { count: 0, window: false, from: '10/11/2020', to: '11/10/2020', fromSet: false};
+    this.state = { count: 0, window: false, from: '--/--/----', to: '--/--/----', fromSet: false};
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClickReserve = this.handleClickReserve.bind(this);

@@ -18,7 +18,7 @@ class Day extends React.Component {
   sendDayFrom() {
 
     var options = { month: 'numeric', day: 'numeric', year: 'numeric' };
-    var r = new Date(this.props.data.date).toLocaleDateString(undefined, options);
+    var r = new Date(this.props.data.date).toLocaleDateString('en-US', {year: '2-digit', month: '2-digit', day: '2-digit'});
     console.log(r);
     this.props.changeDate(r);
 
@@ -53,14 +53,22 @@ class Day extends React.Component {
   }
 
 
+
   componentDidUpdate(prevProps) {
     if (this.props.data !== undefined && prevProps.data !== undefined) {
-      if (this.props.data._id !== prevProps.data._id) {
+      if (this.props.data._id !== prevProps.data._id && this.props.selected !== true) {
         this.setState({bgColor: 'white', bgColorT: 'black'});
       }
     }
 
+    if (this.props.selected !== undefined && prevProps.selected !== undefined) {
+      if (this.props.selected !== prevProps.selected) {
+        console.log(this.props.selected);
+        this.setState({bgColor: 'black', bgColorT: 'white'});
+      }
+    }
   }
+
 
 
 

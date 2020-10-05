@@ -42,9 +42,28 @@ class Month extends React.Component {
 
 
   render() {
-    // var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-    //   'July', 'August', 'September', 'October', 'November', 'December'
-    // ];
+
+    if (this.props.from !== undefined) {
+      var selectedMonthFrom = this.props.from.match(/^(\d\d)\//);
+      var selectedDayFrom = this.props.from.match(/\/(\d\d)\//);
+      if (selectedMonthFrom !== null && selectedDayFrom !== null) {
+        var monthFrom = selectedMonthFrom[1];
+        var dayFrom = selectedDayFrom[1];
+        console.log(monthFrom, dayFrom);
+      }
+    }
+
+
+    if (this.props.to !== undefined) {
+      var selectedMonthTo = this.props.to.match(/^(\d\d)\//);
+      var selectedDayTo = this.props.to.match(/\/(\d\d)\//);
+      if (selectedMonthTo !== null && selectedDayTo !== null) {
+        var monthTo = selectedMonthTo[1];
+        var dayTo = selectedDayTo[1];
+        console.log(monthTo, dayTo);
+      }
+    }
+
 
     var date = new Date();
 
@@ -62,11 +81,17 @@ class Month extends React.Component {
     for (var i = 1; i <= dayInMonth + s; i++) {
 
       if (dayOfTheWeek + 1 !== 1) {
+        var selected = false;
         dayOfTheWeek--;
         days.push(<Day/>);
       } else {
         var data = this.state.data.filter(x=> x.day === j);
-        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter}/>);
+
+        var selected = false;
+        console.log(month + 1, monthFrom, j, dayFrom);
+        if ((month + 1 === parseInt(monthFrom) && j === parseInt(dayFrom)) || (month + 1 === parseInt(monthTo) && j === parseInt(dayTo))) { console.log('was selected'); selected = true; }
+
+        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter} selected = {selected}/>);
         j++;
       }
 
