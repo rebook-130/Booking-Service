@@ -53,9 +53,10 @@ class Dates extends React.Component {
 
         <div id = 'twoMonth'>
 
-          <div id ="firstMonth"><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></div>
+          <div id ="firstMonth"><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to}/></div>
 
-          <div id ="secondMonth"><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter}/></div>
+          <div id ="secondMonth"><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to}/></div>
+
         </div>
 
       </div>
