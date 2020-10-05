@@ -15,7 +15,7 @@ app.get('/api/calendar', function (req, res) {
   console.log('been invoked');
 });
 
-let port = 3003;
+let port = 3002;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`);

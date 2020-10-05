@@ -49,7 +49,6 @@ class Month extends React.Component {
       if (selectedMonthFrom !== null && selectedDayFrom !== null) {
         var monthFrom = selectedMonthFrom[1];
         var dayFrom = selectedDayFrom[1];
-        console.log(monthFrom, dayFrom);
       }
     }
 
@@ -60,7 +59,6 @@ class Month extends React.Component {
       if (selectedMonthTo !== null && selectedDayTo !== null) {
         var monthTo = selectedMonthTo[1];
         var dayTo = selectedDayTo[1];
-        console.log(monthTo, dayTo);
       }
     }
 

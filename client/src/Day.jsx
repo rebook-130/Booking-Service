@@ -6,7 +6,7 @@ class Day extends React.Component {
     super(props);
 
     this.state = {toggle: 0, from: '',
-      bgColor: 'white', bgColorT: '', id: undefined};
+      bgColor: 'white', bgColorT: 'black', id: undefined};
 
     this.sendDayFrom = this.sendDayFrom.bind(this);
     this.boxClick = this.boxClick.bind(this);
@@ -48,13 +48,20 @@ class Day extends React.Component {
     if (this.props.counter === 2) {
 
       this.props.clickCounter(0);
+
     }
 
   }
 
 
 
+  componentDidMount() {
+
+    console.log('was mounted');
+  }
+
   componentDidUpdate(prevProps) {
+
     if (this.props.data !== undefined && prevProps.data !== undefined) {
       if (this.props.data._id !== prevProps.data._id && this.props.selected !== true) {
         this.setState({bgColor: 'white', bgColorT: 'black'});
@@ -73,7 +80,7 @@ class Day extends React.Component {
 
 
   render() {
-    var c;
+    //var c;
     var dat = [];
     if (this.props.data !== undefined && this.props.data.booked) {
       dat.push(
