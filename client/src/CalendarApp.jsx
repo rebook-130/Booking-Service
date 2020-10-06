@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Dates from './Dates.jsx';
 import Base from './Base.jsx';
-class App extends React.Component {
+class CalendarApp extends React.Component {
 
   constructor(props) {
     super(props);
@@ -73,4 +73,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default CalendarApp;

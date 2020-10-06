@@ -48,19 +48,22 @@ class Day extends React.Component {
     if (this.props.counter === 2) {
 
       this.props.clickCounter(0);
-
+      this.props.overClicked();
     }
 
   }
 
 
-
   componentDidMount() {
-
-    console.log('was mounted');
+    if (this.props.selected) {
+      console.log(this.props.selected);
+      this.setState({bgColor: 'black', bgColorT: 'white'});
+    }
   }
 
-  componentDidUpdate(prevProps) {
+
+
+  componentDidUpdate(prevProps, prevState) {
 
     if (this.props.data !== undefined && prevProps.data !== undefined) {
       if (this.props.data._id !== prevProps.data._id && this.props.selected !== true) {
@@ -68,10 +71,15 @@ class Day extends React.Component {
       }
     }
 
+
+
     if (this.props.selected !== undefined && prevProps.selected !== undefined) {
       if (this.props.selected !== prevProps.selected) {
-        console.log(this.props.selected);
-        this.setState({bgColor: 'black', bgColorT: 'white'});
+
+        if (this.props.selected === true) {
+          console.log(this.props.selected);
+          this.setState({bgColor: 'black', bgColorT: 'white'});
+        } else { this.setState({bgColor: 'white', bgColorT: 'black'}); }
       }
     }
   }
