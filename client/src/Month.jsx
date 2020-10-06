@@ -7,8 +7,8 @@ class Month extends React.Component {
     super(props);
 
     this.state = { data: []}; //here we need data for whole month (each day of month)
-
   }
+
 
   componentDidUpdate(prevProps) {
 
@@ -25,8 +25,10 @@ class Month extends React.Component {
   }
 
 
-  componentDidMount() {
 
+
+
+  componentDidMount() {
     var date = new Date();
     var month = date.getMonth() + this.props.currentMonth;
     console.log(month);
@@ -86,10 +88,9 @@ class Month extends React.Component {
         var data = this.state.data.filter(x=> x.day === j);
 
         var selected = false;
-        console.log(month + 1, monthFrom, j, dayFrom);
         if ((month + 1 === parseInt(monthFrom) && j === parseInt(dayFrom)) || (month + 1 === parseInt(monthTo) && j === parseInt(dayTo))) { console.log('was selected'); selected = true; }
 
-        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter} selected = {selected}/>);
+        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter} selected = {selected} overClicked = {this.props.overClicked}/>);
         j++;
       }
 

@@ -6,9 +6,10 @@ class Dates extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {counter: 0};
+    this.state = {counter: 0, overClicked: false};
 
     this.clickCounter = this.clickCounter.bind(this);
+    this.overClicked = this.overClicked.bind(this);
   }
 
 
@@ -17,6 +18,17 @@ class Dates extends React.Component {
     if (n === 0) { this.setState({counter: 0}); }
   }
 
+  overClicked() {
+    this.props.changeDate('--/--/----');
+    this.props.changeDate('--/--/----');
+    this.setState({overClicked: true});
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.overClicked !== prevState.overClicked) {
+      this.setState({overClicked: false});
+    }
+  }
 
   render() {
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -53,11 +65,13 @@ class Dates extends React.Component {
 
         <div id = 'twoMonth'>
 
-          <div id ="firstMonth"><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to}/></div>
+          <div id ="firstMonth"><Month currentMonth = {this.props.currentMonth} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to} overClicked = {this.overClicked}/></div>
 
-          <div id ="secondMonth"><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to}/></div>
+          <div id ="secondMonth"><Month currentMonth = {this.props.currentMonth + 1} changeDate = {this.props.changeDate} clickCounter = {this.clickCounter} counter = {this.state.counter} from = {this.props.from} to = {this.props.to} overClicked = {this.overClicked}/></div>
 
         </div>
+
+
 
       </div>
     );
