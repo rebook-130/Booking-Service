@@ -92,7 +92,7 @@ border: 1px solid rgb(224, 222, 222);
   right: 28px;
   height:fit-content;
   width: 660px;
-
+    z-index: 3;
   }
 
   #button {
