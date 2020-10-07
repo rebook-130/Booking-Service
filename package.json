@@ -13,7 +13,6 @@
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
     "build:dev": "webpack -d --watch",
     "test": "jest"
-
   },
   "dependencies": {
     "express": "^4.17.1",
