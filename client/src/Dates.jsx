@@ -71,7 +71,7 @@ class Dates extends React.Component {
 
         </div>
 
-
+        <button id = 'closeButton' onClick = {()=>this.props.hideClickReserve()}>Close</button>
 
       </div>
     );

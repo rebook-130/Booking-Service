@@ -29,7 +29,7 @@ class Day extends React.Component {
   boxClick() {
     this.props.clickCounter(1);
     console.log(this.props.counter);
-    if (this.state.bgColor === 'white' && this.props.counter <= 1) {
+    if (this.state.bgColor === 'white' && this.props.counter <= 2) {
       this.sendDayFrom();
       this.setState({
         bgColor: 'black',
@@ -41,14 +41,22 @@ class Day extends React.Component {
         bgColor: 'white',
         bgColorT: 'black',
         id: this.props.data._id
-
       });
+
     }
 
     if (this.props.counter === 2) {
 
       this.props.clickCounter(0);
       this.props.overClicked();
+
+      this.sendDayFrom();
+      this.setState({
+        bgColor: 'black',
+        bgColorT: 'white',
+        id: this.props.data._id
+      });
+
     }
 
   }
@@ -65,11 +73,11 @@ class Day extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
 
-    if (this.props.data !== undefined && prevProps.data !== undefined) {
-      if (this.props.data._id !== prevProps.data._id && this.props.selected !== true) {
-        this.setState({bgColor: 'white', bgColorT: 'black'});
-      }
-    }
+    // if (this.props.data !== undefined && prevProps.data !== undefined) {
+    //   if (this.props.data._id !== prevProps.data._id && this.props.selected !== true) {
+    //     this.setState({bgColor: 'white', bgColorT: 'black'});
+    //   }
+    // }
 
 
 

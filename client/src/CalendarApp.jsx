@@ -13,6 +13,7 @@ class CalendarApp extends React.Component {
     this.handleClickReserve = this.handleClickReserve.bind(this);
 
     this.changeDate = this.changeDate.bind(this);
+    this.hideClickReserve = this.hideClickReserve.bind(this);
   }
 
 
@@ -40,6 +41,12 @@ class CalendarApp extends React.Component {
     }
   }
 
+  hideClickReserve() {
+    if (this.state.window === true) {
+      this.setState({window: this.state.window = false});
+    }
+  }
+
   changeDate(fromTo) {
     if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/--'}); this.setState({fromSet: true}); }
     if (this.state.fromSet === true) { this.setState({to: fromTo}); this.setState({fromSet: false}); }
@@ -48,11 +55,14 @@ class CalendarApp extends React.Component {
 
   render() {
     var popUp;
+
     if (this.state.window) {
       popUp = <Dates currentMonth = {this.state.count}
         changeDate = {this.changeDate} from = {this.state.from} to = {this.
-          state.to} handleClick = {this.handleClick}/>;
+          state.to} handleClick = {this.handleClick} hideClickReserve = {this.handleClickReserve}/>;
     } else { popUp = ''; }
+
+
 
     return (
       <div>
