@@ -75,6 +75,14 @@ class CalendarApp extends React.Component {
     var selectedDayTo = this.state.to.match(/\/(\d\d)\//);
 
     var count = selectedDayTo[1] - selectedDayFrom[1];
+
+
+    //have to fix this snippet because not every month contains 31 day
+    console.log(selectedMonthTo[1], selectedMonthFrom[1]);
+    if (selectedMonthTo[1] - selectedMonthFrom[1] !== 0) {
+      count = 31 - parseInt(selectedDayFrom[1]) + parseInt((selectedMonthTo[1] - selectedMonthFrom[1] - 1) * 31) + parseInt(selectedDayTo[1]);
+    }
+
     console.log(selectedDayTo, selectedDayFrom);
     this.setState({nights: count});
 
