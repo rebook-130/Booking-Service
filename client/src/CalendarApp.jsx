@@ -50,7 +50,13 @@ class CalendarApp extends React.Component {
 
   changeDate(fromTo) {
     if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/----'}); this.setState({fromSet: true}); }
-    if (this.state.fromSet === true) { this.setState({to: fromTo}); this.setState({fromSet: false}); }
+    if (this.state.fromSet === true) {
+
+      //we have compare our dates here and 'from' grather than 'to' switch them
+
+      this.setState({to: fromTo});
+      this.setState({fromSet: false});
+    }
 
   }
 
