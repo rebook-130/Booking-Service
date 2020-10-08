@@ -165,13 +165,14 @@ cursor: pointer;
 
   #leftList {display:inline-flex; width: 70%; text-decoration: underline;}
 
-  #rightList {display:inline-flex ;  width: 30%;
+  #rightList {text-align: right;  width: 60px; float: right; padding-right: 20px;
+
 }
 
-  #leftListTotal {display:inline-flex; width: 70%;}
-  #rightListTotal {display:inline-flex ;  width: 30%;}
+  #leftListTotal {display:inline-flex; width: 65%;}
+  #rightListTotal { text-align: right; width: 60px; float: right; padding-right: 20px;}
 
-#total {padding-top: 25px; margin-top: 20px;
+#total {padding-top: 20px; margin-top: 20px;
   border-top: 1px solid rgb(201, 198, 198);
 
 }
@@ -192,6 +193,7 @@ cursor: pointer;
 
 #dates{
   width: 240px;
+  float: left;
 }
 
 
@@ -281,4 +283,13 @@ cursor: pointer;
   #closeButton:active {
   transform: scale(0.99);
 
+}
+
+#nights {
+  float: right;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 22px;
+  padding-right: 30px;
+  padding-top: 20px;
 }

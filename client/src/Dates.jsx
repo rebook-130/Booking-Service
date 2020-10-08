@@ -49,8 +49,13 @@ class Dates extends React.Component {
               <div id = 'baseFormHover'>
 
                 <BaseForm from = {this.props.from} to = {this.props.to}/>
-              </div></div>
+              </div>
+
+
+            </div>
+
           </div>
+          <div id = 'nights'>{this.props.nights === 0 ? 'Select dates' : this.props.nights + ' nights' }</div>
         </div>
 
         <div id ='monthLine'>

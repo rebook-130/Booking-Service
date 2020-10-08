@@ -7,13 +7,14 @@ class CalendarApp extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { count: 0, window: false, from: '--/--/----', to: '--/--/----', fromSet: false};
+    this.state = { count: 0, window: false, from: '--/--/----', to: '--/--/----', fromSet: false, nights: 0};
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClickReserve = this.handleClickReserve.bind(this);
 
     this.changeDate = this.changeDate.bind(this);
     this.hideClickReserve = this.hideClickReserve.bind(this);
+    this.countNights = this.countNights.bind(this);
   }
 
 
@@ -48,8 +49,36 @@ class CalendarApp extends React.Component {
   }
 
   changeDate(fromTo) {
-    if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/--'}); this.setState({fromSet: true}); }
+    if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/----'}); this.setState({fromSet: true}); }
     if (this.state.fromSet === true) { this.setState({to: fromTo}); this.setState({fromSet: false}); }
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.from !== prevState.from) {
+      if ((this.state.from !== '--/--/----') && (this.state.to !== '--/--/----')) { this.countNights(); } else { this.setState({nights: 0}); }
+    }
+
+    if (this.state.to !== prevState.to) {
+      if ((this.state.from !== '--/--/----') && (this.state.to !== '--/--/----')) { this.countNights(); } else { this.setState({nights: 0}); }
+    }
+
+  }
+
+  countNights() {
+
+
+    var selectedMonthFrom = this.state.from.match(/^(\d\d)\//);
+    var selectedDayFrom = this.state.from.match(/\/(\d\d)\//);
+
+    var selectedMonthTo = this.state.to.match(/^(\d\d)\//);
+    var selectedDayTo = this.state.to.match(/\/(\d\d)\//);
+
+    var count = selectedDayTo[1] - selectedDayFrom[1];
+    console.log(selectedDayTo, selectedDayFrom);
+    this.setState({nights: count});
+
+
 
   }
 
@@ -59,7 +88,7 @@ class CalendarApp extends React.Component {
     if (this.state.window) {
       popUp = <Dates currentMonth = {this.state.count}
         changeDate = {this.changeDate} from = {this.state.from} to = {this.
-          state.to} handleClick = {this.handleClick} hideClickReserve = {this.handleClickReserve}/>;
+          state.to} handleClick = {this.handleClick} hideClickReserve = {this.handleClickReserve} nights = {this.state.nights}/>;
     } else { popUp = ''; }
 
 
@@ -70,7 +99,7 @@ class CalendarApp extends React.Component {
 
         <div id="test"></div>
 
-        <Base handleClickReserve = {this.handleClickReserve} from ={this.state.from} to = {this.state.to}/>
+        <Base handleClickReserve = {this.handleClickReserve} from ={this.state.from} to = {this.state.to} nights = {this.state.nights}/>
 
         <div>{popUp}</div>
 
