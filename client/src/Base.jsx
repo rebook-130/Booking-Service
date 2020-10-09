@@ -58,24 +58,24 @@ class Base extends React.Component {
         <div id = 'messageAlert'><span style = {{fontWeight: 300, fontSize: '14px'}}>You won't be charged yet</span></div>
 
         <div id = 'elementList'>
-          <div id = 'leftList'>$60x3</div>
-          <div id = 'rightList'>$180(HC)</div> </div>
+          <div id = 'leftList'>{this.state.data[0] ? '$' + this.state.data[0].price + 'x' + (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div>
+          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div> </div>
 
         <div id = 'elementList'>
           <div id = 'leftList'>Cleaning Fee</div>
-          <div id = 'rightList'>$20(HC)</div> </div>
+          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee : <div></div>}</div> </div>
 
         <div id = 'elementList'>
           <div id = 'leftList'>Service Fee</div>
-          <div id = 'rightList'>$30(HC)</div> </div>
+          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div> </div>
 
         <div id = 'elementList'>
           <div id = 'leftList'>Occupancy taxes and fees</div>
-          <div id = 'rightList'>$30(HC)</div> </div>
+          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].taxes : <div></div>}</div> </div>
 
         <div id = 'total'>
           <div id = 'leftListTotal'>Total</div>
-          <div id = 'rightListTotal'>  $300(HC) </div>
+          <div id = 'rightListTotal'>  ${this.state.data[0] ? this.state.data[0].taxes + this.state.data[0].cleaningFee + this.state.data[0].cleaningFee + (this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights)) : <div></div>} </div>
         </div>
       </div>
 
