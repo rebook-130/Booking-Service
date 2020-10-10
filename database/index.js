@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/calendar');
+mongoose.connect('mongodb://database/calendar');
 
 let calendarSchema = mongoose.Schema({
 
