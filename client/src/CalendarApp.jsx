@@ -52,7 +52,7 @@ class CalendarApp extends React.Component {
     if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/----'}); this.setState({fromSet: true}); }
     if (this.state.fromSet === true) {
 
-      //we have compare our dates here and 'from' grather than 'to' switch them
+      //we have compare our dates here and 'from' grather than 'to' switch them if(this.state.from < fromTo){this.setState({to: this.state.from, })}
 
       this.setState({to: fromTo});
       this.setState({fromSet: false});
