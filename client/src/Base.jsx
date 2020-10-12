@@ -19,6 +19,7 @@ class Base extends React.Component {
     });
 
     var date = new Date();
+    console.log(date, '<--- Date from Base.js');
     var month = date.getMonth();
     console.log(month);
     $.ajax({
