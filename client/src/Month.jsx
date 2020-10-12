@@ -14,6 +14,7 @@ class Month extends React.Component {
 
     if (this.props.currentMonth !== prevProps.currentMonth) {
       var date = new Date();
+      console.log(date, '<--- Date from Month.js componentDidUpdate');
       var month = date.getMonth() + this.props.currentMonth;
       console.log(month);
       $.ajax({
@@ -30,6 +31,7 @@ class Month extends React.Component {
 
   componentDidMount() {
     var date = new Date();
+    console.log(date, '<--- Date from Month.js componentDidMount');
     var month = date.getMonth() + this.props.currentMonth;
     console.log(month);
     $.ajax({
@@ -89,7 +91,6 @@ class Month extends React.Component {
 
         var selected = false;
         if ((month + 1 === parseInt(monthFrom) && j === parseInt(dayFrom)) || (month + 1 === parseInt(monthTo) && j === parseInt(dayTo))) { console.log('was selected'); selected = true; }
-
         days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter} selected = {selected} overClicked = {this.props.overClicked}/>);
         j++;
       }

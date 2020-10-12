@@ -35,11 +35,13 @@ class Dates extends React.Component {
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
     var date = new Date();
+    //console.log(date, '<--- Date from Dates.js');
     var month = date.getMonth() + this.props.currentMonth;
 
     var dateYear1 = new Date(date.getFullYear(), month + 1, 0);
+    //console.log(dateYear1, '<--- Date from Base.js dateYear1');
     var dateYear2 = new Date(date.getFullYear(), month + 2, 0);
-
+    //console.log(dateYear2, '<--- Date from Base.js dateYear1');
     return (
       <div id = 'popup'>
         <div id = 'header'>

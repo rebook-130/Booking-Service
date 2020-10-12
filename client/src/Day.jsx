@@ -18,9 +18,27 @@ class Day extends React.Component {
   sendDayFrom() {
 
     var options = { month: 'numeric', day: 'numeric', year: 'numeric' };
-    var r = new Date(this.props.data.date).toLocaleDateString('en-US', {year: '2-digit', month: '2-digit', day: '2-digit'});
-    console.log(r);
-    this.props.changeDate(r);
+    console.log(this.props.data.date, '<--this.props.data.date from Day');
+
+    var r = new Date(this.props.data.date);
+    console.log(r, '<---r');
+    //toLocaleDateString('en-US', {year: '2-digit', month: '2-digit', day: '2-digit'});
+    var yyyy = r.getFullYear() + '';
+    var yy = yyyy.slice(2);
+    var mm = r.getMonth() < 9 ? '0' + (r.getMonth() + 1) : (r.getMonth() + 1); // getMonth() is zero-based
+    var dd = r.getDate() < 10 ? '0' + r.getDate() : r.getDate();
+
+    console.log('---->');
+    console.log(dd);
+    console.log(mm);
+    console.log(yy);
+
+
+    var h = ''.concat(mm).concat('/').concat(dd).concat('/').concat(yy);
+
+
+    console.log(h, '<--- Date from Day.js');
+    this.props.changeDate(h);
 
 
     //toggle if once was clicked set second date
