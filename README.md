@@ -39,4 +39,3 @@ npm run build:dev
 npm run seed
 npm start
 ```
-test
