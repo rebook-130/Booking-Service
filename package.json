@@ -15,12 +15,12 @@
     "start:dev": "nodemon server/index.js -w server -w database-mysql",
     "build:dev": "webpack -d --watch",
     "test": "jest"
-
   },
   "dependencies": {
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mongoose": "^5.10.7",
+    "nodemon": "^2.0.5",
     "react": "^16.13.1",
     "react-dev": "0.0.1",
     "react-dom": "^16.13.1"

@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/calendar');
+// Uncomment for localhost
+mongoose.connect('mongodb://localhost/calendar');
+// Uncomment for Proxy use
+// mongoose.connect('mongodb://database/calendar');
 
 let calendarSchema = mongoose.Schema({
 
