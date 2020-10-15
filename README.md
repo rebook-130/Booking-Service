@@ -3,10 +3,7 @@
 >This is the booking service for a vacation rental listing webapp.
 
 ## Related Projects
-
   - https://github.com/rebook-130
-
-
 ## Table of Contents
 
 1. [Usage](#Usage)
