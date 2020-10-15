@@ -1,13 +1,11 @@
-# Project Name
+# Rebook
 
-> Project description
+>This is the booking service for a vacation rental listing webapp.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/rebook-130
+
 
 ## Table of Contents
 
@@ -21,21 +19,60 @@
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
 - Node 6.13.0
-- etc
-
-## Development
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
+```
+
+## Development
+```
 npm run build:dev
 npm run seed
 npm start
+```
+## DataBase Schema
+```
+  roomId: String,
+  date: String,
+  month: Number,
+  day: Number,
+  price: Number,
+  maxGuest: Number,
+  cleaningFee: Number,
+  taxes: Number,
+  rating: Number,
+  booked: Boolean,
+```
+## Server API
+
+### Get all date information for a room
+  * GET '/api/calendar?month=9`
+
+**Path Parameters:**
+  * `month` month number
+
+**Success Status Code:** `200`
+
+**Returns:** JSON
+
+```json
+    {
+    "_id":"5f87373027eccd2a628d7099",
+    "roomId":"2",
+    "date":"Fri Oct 02 2020 07:00:00 GMT-0700 (Pacific Daylight Time)",
+    "month":9,
+    "day":2,
+    "price":121,
+    "maxGuest":3,
+    "cleaningFee":40,
+    "taxes":50,
+    "rating":4,
+    "booked":true,
+    "__v":0
+    }
 ```
