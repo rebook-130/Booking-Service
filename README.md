@@ -32,7 +32,7 @@ npm run build:dev
 npm run seed
 npm start
 ```
-## DataBase Schema
+## Database Schema
 ```
   roomId: String,
   date: String,
