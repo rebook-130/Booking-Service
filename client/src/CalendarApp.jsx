@@ -3,11 +3,15 @@ import $ from 'jquery';
 import Dates from './Dates.jsx';
 import Base from './Base.jsx';
 class CalendarApp extends React.Component {
-
   constructor(props) {
     super(props);
-
-    this.state = { count: 0, window: false, from: '--/--/----', to: '--/--/----', fromSet: false, nights: 0};
+    this.state = { count: 0,
+      window: false,
+      from: '--/--/----',
+      to: '--/--/----',
+      fromSet: false,
+      nights: 0,
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClickReserve = this.handleClickReserve.bind(this);
@@ -17,9 +21,6 @@ class CalendarApp extends React.Component {
     this.countNights = this.countNights.bind(this);
   }
 
-
-
-
   // componentDidMount() {
 
   //   var date = new Date();
@@ -28,7 +29,6 @@ class CalendarApp extends React.Component {
   //   this.calend(date);
 
   // }
-
 
   handleClick(value) {
     this.setState({count: this.state.count + value});
@@ -51,13 +51,10 @@ class CalendarApp extends React.Component {
   changeDate(fromTo) {
     if (this.state.fromSet === false) { this.setState({from: fromTo, to: '--/--/----'}); this.setState({fromSet: true}); }
     if (this.state.fromSet === true) {
-
-      //we have compare our dates here and 'from' grather than 'to' switch them if(this.state.from < fromTo){this.setState({to: this.state.from, })}
-
-      this.setState({to: fromTo});
-      this.setState({fromSet: false});
+      // we have compare our dates here and 'from' grather than 'to' switch them if(this.state.from < fromTo){this.setState({to: this.state.from, })}
+      this.setState({ to: fromTo });
+      this.setState({ fromSet: false });
     }
-
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -68,12 +65,9 @@ class CalendarApp extends React.Component {
     if (this.state.to !== prevState.to) {
       if ((this.state.from !== '--/--/----') && (this.state.to !== '--/--/----')) { this.countNights(); } else { this.setState({nights: 0}); }
     }
-
   }
 
   countNights() {
-
-
     var selectedMonthFrom = this.state.from.match(/^(\d\d)\//);
     var selectedDayFrom = this.state.from.match(/\/(\d\d)\//);
 
@@ -82,18 +76,14 @@ class CalendarApp extends React.Component {
 
     var count = selectedDayTo[1] - selectedDayFrom[1];
 
-
-    //have to fix this snippet because not every month contains 31 day
+    // have to fix this snippet because not every month contains 31 day
     console.log(selectedMonthTo[1], selectedMonthFrom[1]);
     if (selectedMonthTo[1] - selectedMonthFrom[1] !== 0) {
       count = 31 - parseInt(selectedDayFrom[1]) + parseInt((selectedMonthTo[1] - selectedMonthFrom[1] - 1) * 31) + parseInt(selectedDayTo[1]);
     }
 
     console.log(selectedDayTo, selectedDayFrom);
-    this.setState({nights: count});
-
-
-
+    this.setState({ nights: count });
   }
 
   render() {
@@ -105,25 +95,14 @@ class CalendarApp extends React.Component {
           state.to} handleClick = {this.handleClick} hideClickReserve = {this.handleClickReserve} nights = {this.state.nights}/>;
     } else { popUp = ''; }
 
-
-
     return (
       <div>
-
-
         <div id="test"></div>
-
         <Base handleClickReserve = {this.handleClickReserve} from ={this.state.from} to = {this.state.to} nights = {this.state.nights}/>
-
         <div>{popUp}</div>
-
       </div>
     );
-
-
   }
-
 }
-
 
 export default CalendarApp;

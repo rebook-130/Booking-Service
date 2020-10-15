@@ -1,7 +1,7 @@
 const express = require('express');
 const db = require('../database/index.js');
-let app = express();
 
+const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 
@@ -15,7 +15,7 @@ app.get('/api/calendar', function (req, res) {
   console.log('been invoked');
 });
 
-let port = 3002;
+const port = 3002;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`);

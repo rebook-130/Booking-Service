@@ -13,10 +13,10 @@ class BaseForm extends React.Component {
 
     return (
       <div>
-        <div id = 'baseForm' onClick={()=>x()}>
+        <div id='baseForm' onClick={() => x()}>
 
-          <div id = 'checkIn'> <b>CHECK-IN</b> <span style = {{fontWeight: 300, fontSize: '17px'}}><br />  {this.props.from}</span> </div>
-          <div id = 'checkOut'> <b>CHECKOUT</b><span style = {{fontWeight: 300, fontSize: '17px'}}><br /> {this.props.to}</span></div>
+          <div id='checkIn'> <b>CHECK-IN</b> <span style={{ fontWeight: 300, fontSize: '17px' }}><br />  {this.props.from}</span> </div>
+          <div id='checkOut'> <b>CHECKOUT</b><span style={{ fontWeight: 300, fontSize: '17px' }}><br /> {this.props.to}</span></div>
 
 
 

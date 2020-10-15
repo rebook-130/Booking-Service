@@ -23,4 +23,8 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html) /dist
 build/
 
+#bundle
+/client/dist/bundle.js
 
+#package lock
+package-lock.json
