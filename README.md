@@ -47,7 +47,34 @@ npm start
 ```
 ## Server API
 
-### Get all date information for a room
+### Create an entry in the room database
+  * POST '/api/calendar?month=9`
+
+**Path Parameters:**
+  * `month` month number
+
+**Success Status Code:** `200`
+
+**Post Data:** JSON
+
+```json
+    {
+    "_id":"5f87373027eccd2a628d7099",
+    "roomId":"2",
+    "date":"Fri Oct 02 2020 07:00:00 GMT-0700 (Pacific Daylight Time)",
+    "month":9,
+    "day":2,
+    "price":121,
+    "maxGuest":3,
+    "cleaningFee":40,
+    "taxes":50,
+    "rating":4,
+    "booked":true,
+    "__v":0
+    }
+```
+
+### Read all date information for a room
   * GET '/api/calendar?month=9`
 
 **Path Parameters:**
