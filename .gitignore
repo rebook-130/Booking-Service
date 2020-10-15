@@ -25,3 +25,6 @@ build/
 
 #bundle
 /client/dist/bundle.js
+
+#package lock
+package-lock.json
