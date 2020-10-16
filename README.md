@@ -48,7 +48,7 @@ npm start
 ## Server API
 
 ### Create an entry in the room database
-  * POST '/api/calendar
+  * POST '/api/room/calendar
 
 **Success Status Code:** `201`
 
@@ -70,9 +70,9 @@ npm start
 ```
 
 
-### Get everything from room id X in Month Y
-  * GET '/api/room/:roomid/calendar/:month
-  * '/api/room/1/calendar/9
+### GET all data for month
+  * GET '/api/room/calendar?month=Number
+  * '/api/room/calendar/9
 
 **Path Parameters:**
   * `month` month id
@@ -98,7 +98,7 @@ npm start
 
 ------------------------
 ### Update a booking
-  * PATCH `/api/calendar`
+  * PATCH `/api/room/calendar`
 Specify Room id in Route
 **Path Parameters:**
   * `month` month id
@@ -115,7 +115,7 @@ Specify Room id in Route
 ```
 
 ### Delete a Booking
-  * DELETE  '/api/calendar?month=9`
+  * DELETE  '/api/room/calendar?month=9`
 
 **Path Parameters:**
   * `month` month id
