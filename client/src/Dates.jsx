@@ -2,7 +2,6 @@ import React from 'react';
 import Month from './Month.jsx';
 import BaseForm from './BaseForm.jsx';
 class Dates extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -11,8 +10,6 @@ class Dates extends React.Component {
     this.clickCounter = this.clickCounter.bind(this);
     this.overClicked = this.overClicked.bind(this);
   }
-
-
   clickCounter(n) {
     this.setState({counter: this.state.counter + n});
     if (n === 0) { this.setState({counter: 0}); }

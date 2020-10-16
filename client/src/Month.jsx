@@ -6,7 +6,7 @@ class Month extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { data: []}; //here we need data for whole month (each day of month)
+    this.state = { data: [] }; //here we need data for whole month (each day of month)
   }
 
 
@@ -19,15 +19,11 @@ class Month extends React.Component {
       console.log(month);
       $.ajax({
         method: 'GET',
-        url: '/api/calendar?month=' + month,
-        success: result => this.setState({data: result})
+        url: '/api/room/calendar?month=' + month,
+        success: result => this.setState({ data: result })
       });
     }
   }
-
-
-
-
 
   componentDidMount() {
     var date = new Date();
@@ -36,17 +32,11 @@ class Month extends React.Component {
     console.log(month);
     $.ajax({
       method: 'GET',
-      url: '/api/calendar?month=' + month,
-      success: result => this.setState({data: result})
+      url: '/api/room/calendar?month=' + month,
+      success: result => this.setState({ data: result })
     });
-
   }
-
-
-
-
   render() {
-
     if (this.props.from !== undefined) {
       var selectedMonthFrom = this.props.from.match(/^(\d\d)\//);
       var selectedDayFrom = this.props.from.match(/\/(\d\d)\//);
@@ -85,13 +75,13 @@ class Month extends React.Component {
       if (dayOfTheWeek + 1 !== 1) {
         var selected = false;
         dayOfTheWeek--;
-        days.push(<Day/>);
+        days.push(<Day />);
       } else {
-        var data = this.state.data.filter(x=> x.day === j);
+        var data = this.state.data.filter(x => x.day === j);
 
         var selected = false;
         if ((month + 1 === parseInt(monthFrom) && j === parseInt(dayFrom)) || (month + 1 === parseInt(monthTo) && j === parseInt(dayTo))) { console.log('was selected'); selected = true; }
-        days.push(<Day day = {j} data = {data[0]} changeDate = {this.props.changeDate} clickCounter = {this.props.clickCounter} counter = {this.props.counter} selected = {selected} overClicked = {this.props.overClicked}/>);
+        days.push(<Day day={j} data={data[0]} changeDate={this.props.changeDate} clickCounter={this.props.clickCounter} counter={this.props.counter} selected={selected} overClicked={this.props.overClicked} />);
         j++;
       }
 
@@ -105,9 +95,9 @@ class Month extends React.Component {
 
       <div>
         {/* <div> {monthNames[month % 12]}</div> */}
-        <table id = 'dayWeek'><td> Su</td><td> Mo</td><td> Tu </td><td>We</td><td> Th</td><td> Fr</td><td> Sa</td></table>
+        <table id='dayWeek'><td> Su</td><td> Mo</td><td> Tu </td><td>We</td><td> Th</td><td> Fr</td><td> Sa</td></table>
 
-        <table id = 'M'>
+        <table id='M'>
           <tbody>
             {daysM}
           </tbody>

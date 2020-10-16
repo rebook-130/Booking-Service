@@ -24,7 +24,8 @@ class Base extends React.Component {
     let date = new Date();
     const month = date.getMonth();
     const self = this;
-    axios.get(`/api/calendar?month=${month}`)
+    console.log(`/api/room/calendar?month=${month}`);
+    axios.get(`/api/room/calendar?month=${month}`)
       .then((response) => {
         self.setState({ data: response.data });
       })
