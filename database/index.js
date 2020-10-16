@@ -44,9 +44,13 @@ const save = (singleDate) => {
   });
 };
 
+const postThis = (document) => {
+  Calendar.insert(document);
+};
+
 const get = (roomId, month, cb) => {
-  //Calendar.find({}).exec((err, result) => { cb(err, result); });
-  console.log(roomId, month);
+  // Calendar.find({}).exec((err, result) => { cb(err, result); });
+  // console.log(roomId, month);
   Calendar.find({ 'roomId': roomId, 'month': month}).exec((err, result) => { cb(err, result); });
   // Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
 };
@@ -58,3 +62,4 @@ const deleteAll = () => {
 module.exports.save = save;
 module.exports.get = get;
 module.exports.delete = deleteAll;
+module.exports.postThis = postThis;
