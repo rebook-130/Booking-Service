@@ -2,89 +2,74 @@ import React from 'react';
 import BaseForm from './BaseForm.jsx';
 import $ from 'jquery';
 class Base extends React.Component {
-
   constructor(props) {
     super(props);
-
-    this.state = {data: []};
-
+    this.state = { data: [] };
   }
 
   componentDidMount() {
-
     const el = document.querySelector('#button');
     el.addEventListener('mousemove', (e) => {
       el.style.setProperty('--x', -120 + e.offsetX + 'px');
       el.style.setProperty('--y', -30 + e.offsetY + 'px');
     });
 
-    var date = new Date();
+    let date = new Date();
     console.log(date, '<--- Date from Base.js');
-    var month = date.getMonth();
+    const month = date.getMonth();
     console.log(month);
     $.ajax({
       method: 'GET',
       url: '/api/calendar?month=' + month,
-      success: result => this.setState({data: result})
+      success: result => this.setState({ data: result }),
     });
-
   }
 
   render() {
-
-    console.log(this.props.from, this.props.to); //by using Data()
+    // console.log(this.props.from, this.props.to); //by using Data()
     return (
-      <div id = "base">
-
+      <div id="base">
         <div>
-          <div id = 'basePrice'>{this.state.data[0] ? <div><span style = {{fontSize: '22px', color: 'black'}}>$ {this.state.data[0].price}</span>/night</div> : <div>loading...</div>}</div>
-          <div id = 'baseRate'><span style = {{color: 'red'}}> &#9733;</span>{this.state.data[0] ? this.state.data[0].rating : <div></div>}(12)</div>
+          <div id='basePrice'>{this.state.data[0] ? <div>
+            <span style={{ fontSize: '22px', color: 'black' }}>$ {this.state.data[0].price}</span>/night</div> : <div>loading...</div>}</div>
+          <div id='baseRate'>
+            <span style={{ color: 'red' }}> &#9733;</span>
+            {this.state.data[0] ? this.state.data[0].rating : <div></div>}(12)</div>
         </div>
-
-        <div id = 'baseFormWrapper'>
-
-          <div id = 'baseFormHover'>
-            <BaseForm from = {this.props.from} to = {this.props.to} handleClickReserve = {this.props.handleClickReserve}/>
+        <div id='baseFormWrapper'>
+          <div id='baseFormHover'>
+            <BaseForm from={this.props.from} to={this.props.to} handleClickReserve={this.props.handleClickReserve} />
           </div>
-
-
-          <div id = 'guest'><b>GUESTS</b><span style = {{fontWeight: 300, fontSize: '17px'}}><br /> 2 guests </span>
-
+          <div id='guest'><b>GUESTS</b><span style={{ fontWeight: 300, fontSize: '17px' }}><br /> 2 guests </span>
           </div>
-
         </div>
-
-        <button id = 'button' onClick={()=>this.props.handleClickReserve()}>{'Reserve'}</button>
-
-        <div id = 'messageAlert'><span style = {{fontWeight: 300, fontSize: '14px'}}>You won't be charged yet</span></div>
-
-        <div id = 'elementList'>
-          <div id = 'leftList'>{this.state.data[0] ? '$' + this.state.data[0].price + 'x' + (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div>
-          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div> </div>
-
-        <div id = 'elementList'>
-          <div id = 'leftList'>Cleaning Fee</div>
-          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee : <div></div>}</div> </div>
-
-        <div id = 'elementList'>
-          <div id = 'leftList'>Service Fee</div>
-          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div> </div>
-
-        <div id = 'elementList'>
-          <div id = 'leftList'>Occupancy taxes and fees</div>
-          <div id = 'rightList'>${this.state.data[0] ? this.state.data[0].taxes : <div></div>}</div> </div>
-
-        <div id = 'total'>
-          <div id = 'leftListTotal'>Total</div>
-          <div id = 'rightListTotal'>  ${this.state.data[0] ? this.state.data[0].taxes + this.state.data[0].cleaningFee + this.state.data[0].cleaningFee + (this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights)) : <div></div>} </div>
+        <button id='button' onClick={() => this.props.handleClickReserve()}>{'Reserve'}</button>
+        <div id='messageAlert'>
+          <span style={{ fontWeight: 300, fontSize: '14px' }}>You won't be charged yet</span>
+        </div>
+        <div id='elementList'>
+          <div id='leftList'>{this.state.data[0] ? '$' + this.state.data[0].price + 'x' + (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div>
+          <div id='rightList'>${this.state.data[0] ? this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div>
+          </div>
+        <div id='elementList'>
+          <div id='leftList'>Cleaning Fee</div>
+          <div id='rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee : <div></div>}</div>
+          </div>
+        <div id='elementList'>
+          <div id='leftList'>Service Fee</div>
+          <div id='rightList'>${this.state.data[0] ? this.state.data[0].cleaningFee * (this.props.nights === 0 ? 1 : this.props.nights) : <div></div>}</div>
+          </div>
+        <div id='elementList'>
+          <div id='leftList'>Occupancy taxes and fees</div>
+          <div id='rightList'>${this.state.data[0] ? this.state.data[0].taxes : <div></div>}</div>
+          </div>
+        <div id='total'>
+          <div id='leftListTotal'>Total</div>
+          <div id='rightListTotal'>  ${this.state.data[0] ? this.state.data[0].taxes + this.state.data[0].cleaningFee + this.state.data[0].cleaningFee + (this.state.data[0].price * (this.props.nights === 0 ? 1 : this.props.nights)) : <div></div>} </div>
         </div>
       </div>
-
     );
   }
-
-
 }
 
 export default Base;
-

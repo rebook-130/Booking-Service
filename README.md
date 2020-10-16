@@ -47,11 +47,35 @@ npm start
 ```
 ## Server API
 
-### Get all date information for a room
-  * GET '/api/calendar?month=9`
+### Create an entry in the room database
+  * POST '/api/calendar
+
+**Success Status Code:** `201`
+
+**Request Body:** Expects JSON with the following keys.
+
+```json
+    {
+      "roomId": Number,
+      "date": String,
+      "month": Number,
+      "day": Number,
+      "price": Number,
+      "maxGuest": Number,
+      "cleaningFee": Number,
+      "taxes": Number,
+      "rating": Number,
+      "booked": Boolean,
+    }
+```
+
+
+### Get everything from room id X in Month Y
+  * GET '/api/room/:roomid/calendar/:month
+  * '/api/room/1/calendar/9
 
 **Path Parameters:**
-  * `month` month number
+  * `month` month id
 
 **Success Status Code:** `200`
 
@@ -59,17 +83,45 @@ npm start
 
 ```json
     {
-    "_id":"5f87373027eccd2a628d7099",
-    "roomId":"2",
-    "date":"Fri Oct 02 2020 07:00:00 GMT-0700 (Pacific Daylight Time)",
-    "month":9,
-    "day":2,
-    "price":121,
-    "maxGuest":3,
-    "cleaningFee":40,
-    "taxes":50,
-    "rating":4,
-    "booked":true,
-    "__v":0
+      "roomId": Number,
+      "date": String,
+      "month": Number,
+      "day": Number,
+      "price": Number,
+      "maxGuest": Number,
+      "cleaningFee": Number,
+      "taxes": Number,
+      "rating": Number,
+      "booked":true,
     }
 ```
+
+------------------------
+### Update a booking
+  * PATCH `/api/calendar`
+Specify Room id in Route
+**Path Parameters:**
+  * `month` month id
+
+**Success Status Code:** `200`
+
+
+```json
+    {
+      "month": Number,
+      "day": Number,
+      "booked": Boolean,
+    }
+```
+
+### Delete a Booking
+  * DELETE  '/api/calendar?month=9`
+
+**Path Parameters:**
+  * `month` month id
+
+**Success Status Code:** `200`
+
+
+
+
