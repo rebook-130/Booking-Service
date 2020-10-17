@@ -5,7 +5,7 @@ use rebook;
 
 
 CREATE TABLE IF NOT EXISTS rooms (
-  room_id SMALLSERIAL NOT NULL,
+  room_id UUID NOT NULL,
   room_name VARCHAR(55) NOT NULL,
   room_location VARCHAR(55) NOT NULL,
   max_guest SMALLINT NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE IF NOT EXISTS rooms (
 )
 
 CREATE TABLE IF NOT EXISTS reservation_by_rooms (
-  reservation_id SMALLSERIAL NOT NULL,
-  room_id SMALLINT NOT NULL,
+  reservation_id UUID NOT NULL,
+  room_id INT NOT NULL,
   check_in VARCHAR(10) NOT NULL,
   check_out VARCHAR(10) NOT NULL,
   guests SMALLINT NOT NULL,
-  reservation_name STRING NOT NULL,
+  user_id INT NOT NULL,
+  user_name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  userid VARCHAR(50) primary key NOT NULL,
   PRIMARY KEY (room_id, reservation_id),
 )
