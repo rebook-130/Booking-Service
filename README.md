@@ -16,7 +16,7 @@
 
 ## Requirements
 
-- Node 6.13.0
+- Node 6.13
 
 ### Installing Dependencies
 
