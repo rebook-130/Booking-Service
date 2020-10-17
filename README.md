@@ -16,7 +16,7 @@
 
 ## Requirements
 
-- Node 6.13.0
+- Node 6.13
 
 ### Installing Dependencies
 
@@ -36,6 +36,7 @@ npm start
 ```json
 // calendar
     {
+      "id": "Number",
       "month": "Number",
       "day": "Number",
       "year": "Number",
