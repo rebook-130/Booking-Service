@@ -60,25 +60,25 @@ npm start
 ```json
 // calendar
     {
-      "month": "Number",
-      "day": "Number",
-      "year": "Number",
+      "month": "int",
+      "day": "int",
+      "year": "int",
     }
 // rooms
     {
-      "room_id": "Number",
-      "max_guest": "Number",
-      "price": "Number",
+      "room_id": "int",
+      "max_guest": "int",
+      "price": "int",
       "PRIMARY KEY (room_id)"
     }
 // reservations
     {
-      "reservation_id": "Number",
-      "room_id": "Number",
-      "month": "Number",
-      "day": "Number",
-      "year": "Number",
-      "guests": "Number",
+      "reservation_id": "int",
+      "room_id": "int",
+      "month": "int",
+      "day": "int",
+      "year": "int",
+      "guests": "int",
       "PRIMARY KEY (reservation_id)"
     }
 ```
