@@ -1,10 +1,14 @@
+import $ from 'jquery';
 import React from 'react';
 import BaseForm from './BaseForm.jsx';
-import $ from 'jquery';
+
+const axios = require('axios');
+
 class Base extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
+    this.getAllCalendarInfo = this.getAllCalendarInfo.bind(this);
   }
 
   componentDidMount() {
@@ -13,16 +17,21 @@ class Base extends React.Component {
       el.style.setProperty('--x', -120 + e.offsetX + 'px');
       el.style.setProperty('--y', -30 + e.offsetY + 'px');
     });
+    this.getAllCalendarInfo();
+  }
 
+  getAllCalendarInfo() {
     let date = new Date();
-    console.log(date, '<--- Date from Base.js');
     const month = date.getMonth();
-    console.log(month);
-    $.ajax({
-      method: 'GET',
-      url: '/api/calendar?month=' + month,
-      success: result => this.setState({ data: result }),
-    });
+    const self = this;
+    console.log(`/api/room/calendar?month=${month}`);
+    axios.get(`/api/room/calendar?month=${month}`)
+      .then((response) => {
+        self.setState({ data: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

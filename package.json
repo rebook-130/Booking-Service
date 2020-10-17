@@ -8,15 +8,16 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build:prod": "webpack",
-    "start:prod": "node server/index.js",
+    "build-prod": "webpack",
     "seed": "node database/seeding.js",
-    "start": "node server/index.js",
-    "start:dev": "nodemon server/index.js -w server -w database-mysql",
-    "build:dev": "webpack -d --watch",
+    "start-prod": "node server/index.js",
+    "start": "nodemon server/index.js -w server -w database-mysql",
+    "build": "webpack -d --watch",
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mongoose": "^5.10.7",
