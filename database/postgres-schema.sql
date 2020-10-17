@@ -5,26 +5,25 @@ CREATE DATABASE rebook;
 -- use 'rebook' database
 \c rebook;
 
--- add constraints to fields***
-CREATE TABLE IF NOT EXISTS calendar (
-  id SERIAL PRIMARY KEY,
-  month smallint NOT NULL,
-  day smallint NOT NULL,
-  year smallint NOT NULL,
-)
-
 CREATE TABLE IF NOT EXISTS rooms (
-  room_id SERIAL PRIMARY KEY,
-  max_guest smallint NOT NULL,
-  price smallint NOT NULL,
+  room_name VARCHAR(55)
+  room_location VARCHAR(255)
+  room_id SERIAL PRIMARY KEY NOT NULL,
+  max_guest SMALLINT NOT NULL,
+  price SMALLINT NOT NULL,
 )
 
 CREATE TABLE IF NOT EXISTS reservations (
   reservation_id SERIAL PRIMARY KEY,
-  room_id smallint REFERENCES rooms(room_id),
-  year smallint NOT NULL,
-  month smallint NOT NULL,
-  day smallint NOT NULL,
-  guests smallint NOT NULL,
-
+  room_id INT NOT NULL REFERENCES rooms(room_id),
+  user_id INT NOT NULL REFERENCES users(user_id),
+  check_in VARCHAR(10) NOT NULL,
+  check_out VARCHAR(10) NOT NULL,
+  guests SMALLINT NOT NULL,
+)
+CREATE TABLE IF NOT EXISTS users (
+  reservation_id SMALLSERIAL PRIMARY KEY,
+  reservation_name VARCHAR(55) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  user_id INT NOT NULL PRIMARY KEY,
 )

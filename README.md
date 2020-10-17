@@ -86,7 +86,7 @@ npm start
 ## Server API:
 
 ### Create a new reservation:
-  * POST `/api/room/:roomID/reservations/`
+  * POST `/api/room/:roomID/reservations`
 
 **Path Parameters:**
   * `roomID` Room ID
@@ -107,10 +107,9 @@ npm start
 
 
 ### GET reservations for a room:
-  * GET `/api/room/:roomID/reservations/?month=1`
+  * GET `/api/room/:roomID/reservations`
 
 **Path Parameters:**
-  * `month` Month ID
   * `roomID` Room ID
 
 **Success Status Code:** `200`
@@ -150,6 +149,5 @@ npm start
 **Path Parameters:**
   * `reservationID` Reservation ID
 
-**Success Status Code:** `200`
+**Success Status Code:** `204`
 
-========================
