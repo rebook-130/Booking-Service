@@ -32,50 +32,85 @@ npm run build:dev
 npm run seed
 npm start
 ```
-## Database Schema
+## PostgreSQL Schema:
+```json
+// calendar
+    {
+      "month": "Number",
+      "day": "Number",
+      "year": "Number",
+    }
+// rooms
+    {
+      "room_id": "Number",
+      "max_guest": "Number",
+      "price": "Number",
+    }
+// reservations
+    {
+      "room_id": "Number",
+      "reservation_id": "Number",
+      "month": "Number",
+      "day": "Number",
+      "year": "Number",
+      "guests": "Number",
+    }
 ```
-  roomId: String,
-  date: String,
-  month: Number,
-  day: Number,
-  price: Number,
-  maxGuest: Number,
-  cleaningFee: Number,
-  taxes: Number,
-  rating: Number,
-  booked: Boolean,
+## Cassandra Schema:
+```json
+// calendar
+    {
+      "month": "Number",
+      "day": "Number",
+      "year": "Number",
+    }
+// rooms
+    {
+      "room_id": "Number",
+      "max_guest": "Number",
+      "price": "Number",
+      "PRIMARY KEY (room_id)"
+    }
+// reservations
+    {
+      "reservation_id": "Number",
+      "room_id": "Number",
+      "month": "Number",
+      "day": "Number",
+      "year": "Number",
+      "guests": "Number",
+      "PRIMARY KEY (reservation_id)"
+    }
 ```
-## Server API
+## Server API:
 
-### Create an entry in the room database
-  * POST '/api/room/calendar
+### Create a new reservation:
+  * POST `/api/room/:roomID/reservations/`
+
+**Path Parameters:**
+  * `roomID` Room ID
 
 **Success Status Code:** `201`
 
 **Request Body:** Expects JSON with the following keys.
 
 ```json
-    {
-      "roomId": Number,
-      "date": String,
-      "month": Number,
-      "day": Number,
-      "price": Number,
-      "maxGuest": Number,
-      "cleaningFee": Number,
-      "taxes": Number,
-      "rating": Number,
-      "booked": Boolean,
-    }
+    [{
+      "roomId": "Number",
+      "date": "String",
+      "month": "Number",
+      "day": "Number",
+      "guests": "Number",
+    }]
 ```
 
 
-### GET all data for month
-  * GET '/api/room/calendar?month=Number
-  * '/api/room/calendar/9
+### GET reservations for a room:
+  * GET `/api/room/:roomID/reservations/?month=1`
 
 **Path Parameters:**
-  * `month` month id
+  * `month` Month ID
+  * `roomID` Room ID
 
 **Success Status Code:** `200`
 
@@ -83,45 +118,37 @@ npm start
 
 ```json
     {
-      "roomId": Number,
-      "date": String,
-      "month": Number,
-      "day": Number,
-      "price": Number,
-      "maxGuest": Number,
-      "cleaningFee": Number,
-      "taxes": Number,
-      "rating": Number,
-      "booked":true,
+      "month": "Number",
+      "day": "Number",
+      "year": "Number",
+      "guests": "Number",
     }
 ```
 
 ------------------------
 ### Update a booking
-  * PATCH `/api/room/calendar`
-Specify Room id in Route
+  * PATCH `/api/room/:roomID/reservations/:reservationID
+`
 **Path Parameters:**
-  * `month` month id
+  * `roomID` Room id
+  * `reservationID` Reservation ID
 
 **Success Status Code:** `200`
 
-
+**Request Body**: Expects JSON with the following keys.
 ```json
     {
-      "month": Number,
-      "day": Number,
-      "booked": Boolean,
+      "reservation_id": Number,
+      "guests": Number,
     }
 ```
 
-### Delete a Booking
-  * DELETE  '/api/room/calendar?month=9`
+### Delete a Booking:
+  * DELETE  `/api/room/:roomID/reservations/:reservationID`
 
 **Path Parameters:**
-  * `month` month id
+  * `reservationID` Reservation ID
 
 **Success Status Code:** `200`
 
-
-
-
+========================

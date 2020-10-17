@@ -50,6 +50,7 @@ const postThis = (document) => {
 
 const get = (roomId, month, cb) => {
   // How should I get the month before and the month after ?
+  // I need to get 3 months worth of data
   Calendar.find({ 'roomId': roomId, 'month': month}).exec((err, result) => { cb(err, result); });
   // Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
 };
