@@ -8,6 +8,7 @@ const roomMaker = (start, end) => {
   const rooms = [];
   for (let i = start; i <= end; i += 1) {
     const room = {
+      // Add double quotes to room name and location
       room_name: `'${faker.random.word()} ${faker.vehicle.color()}'`,
       room_location: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}`,
       max_guest: randomInt(2, 5),
@@ -19,7 +20,7 @@ const roomMaker = (start, end) => {
 };
 
 const csvWriter = createCsvWriter({
-  path: './post_room.csv',
+  path: './postRoom.csv',
   header: [
     { id: 'room_name', title: 'ROOMNAME' },
     { id: 'room_location', title: 'ROOMLOCATION' },
@@ -28,14 +29,10 @@ const csvWriter = createCsvWriter({
   ],
 });
 
-// const records = [
-//   { name: 'Bob', lang: 'French, English' },
-//   { name: 'Mary', lang: 'English' },
-// ];
 // returns a promise
-const listDump = roomMaker(1, 1000000);
+const listDump = roomMaker(0, 10000000);
 
 csvWriter.writeRecords(listDump)
   .then(() => {
-    console.log('...Done');
+    console.log('...Toast is done');
   });
