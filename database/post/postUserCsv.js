@@ -1,38 +1,21 @@
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-
+const fs = require('fs');
 const faker = require('faker');
+const csvWriter = require('csv-write-stream');
+const writer = csvWriter();
 
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
-const userMake = (start, end) => {
-  const users = [];
-  for (let i = start; i <= end; i += 1) {
-    const user = {
-      user_name: `'${faker.name.firstName()} ${faker.name.lastName()}'`,
-      email: faker.internet.email(),
-    };
-    users.push(user);
+const userMaker = () => {
+  writer.pipe(fs.createWriteStream('postUser.csv'));
+  for (var i = 0; i < 10000; i++) {
+    writer.write(
+      {
+        user_name: `${faker.name.firstName()}${faker.name.lastName()}`,
+        email: `${faker.internet.exampleEmail()}`,
+      },
+    );
   }
-  return users;
+  writer.end();
+  console.log('Toast is done');
 };
-
-const csvWriter = createCsvWriter({
-  path: './post_user.csv',
-  header: [
-    { id: 'user_name', title: 'USERNAME' },
-    { id: 'email', title: 'EMAIL' },
-
-  ],
-});
-
-// const records = [
-//   { name: 'Bob', lang: 'French, English' },
-//   { name: 'Mary', lang: 'English' },
-// ];
-// returns a promise
-const listDump = userMake(1, 10);
-
-csvWriter.writeRecords(listDump)
-  .then(() => {
-    console.log('...Done');
-  });
+userMaker();

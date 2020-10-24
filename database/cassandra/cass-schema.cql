@@ -5,22 +5,28 @@ use rebook;
 
 
 CREATE TABLE IF NOT EXISTS rooms (
-  room_id UUID NOT NULL,
-  room_name VARCHAR(55) NOT NULL,
-  room_location VARCHAR(55) NOT NULL,
-  max_guest SMALLINT NOT NULL,
-  price SMALLINT NOT NULL,
+  room_id INT,
+  room_name TEXT,
+  room_location TEXT,
+  max_guest SMALLINT,
+  price SMALLINT,
   PRIMARY KEY (room_id),
-)
+);
 
-CREATE TABLE IF NOT EXISTS reservation_by_rooms (
-  reservation_id UUID NOT NULL,
-  room_id INT NOT NULL,
-  check_in VARCHAR(10) NOT NULL,
-  check_out VARCHAR(10) NOT NULL,
-  guests SMALLINT NOT NULL,
-  user_id INT NOT NULL,
-  user_name VARCHAR(50) NOT NULL,
-  email VARCHAR(50) NOT NULL,
+COPY rebook.rooms  (room_id, room_name, room_location, max_guest, price) FROM '/Users/ufo/dev/SDC/booking-service/database/cassandra/cassRooms.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+CREATE TABLE IF NOT EXISTS reservations_by_room (
+  reservation_id INT,
+  room_id INT,
+  check_in TEXT,
+  check_out TEXT,
+  guests SMALLINT,
+  user_id INT,
+  user_name TEXT,
+  email TEXT,
   PRIMARY KEY (room_id, reservation_id),
-)
+);
+
+
+COPY rebook.reservations_by_room  (reservation_id, room_id, check_in, check_out, guests, user_id, user_name, email)
+FROM '/Users/ufo/dev/SDC/booking-service/database/cassandra/cassReservations.csv'  WITH DELIMITER=',' AND HEADER=TRUE;

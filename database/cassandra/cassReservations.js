@@ -6,17 +6,20 @@ const writer = csvWriter();
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 const reservationMaker = () => {
-  writer.pipe(fs.createWriteStream('reservations.csv'));
+  writer.pipe(fs.createWriteStream('cassReservations.csv'));
   let count = 1;
   let roomCount = 1;
-  for (var i = 1; i < 30000001; i++) {
+  for (var i = 1; i < 10000001; i++) {
     writer.write(
       {
+        reservation_id: `${i}`,
         room_id: `${roomCount}`,
-        user_id: `${i}`,
         check_in: faker.date.between('2020-11-01', '2021-01-01'),
         check_out: faker.date.between('2021-03-01', '2021-06-01'),
         guests: randomInt(1, 5),
+        user_id: `${i}`,
+        user_name: `${faker.name.firstName()}${faker.name.lastName()}`,
+        email: `${faker.internet.exampleEmail()}`,
       },
     );
     count++;
