@@ -8,18 +8,23 @@ const app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-// app.post('/api/room/calendar', function (req, res) {
-// });
-
 app.get('/api/room/:roomId/calendar/', (req, res) => {
   const { roomId } = req.params;
   console.log(`${roomId}`);
-
   db.getRoomReservations(roomId, (err, result) => {
     if (err) {
       res.status(400).send(err);
     }
     res.status(200).send(result.rows);
+  });
+});
+
+app.post('/api/room/calendar', (req, res) => {
+  db.createReservation((err, result) => {
+    if (err) {
+      res.status(400).send(err);
+    }
+    res.status(200).send();
   });
 });
 
@@ -34,7 +39,7 @@ app.get('/api/room/:roomId/calendar/', (req, res) => {
 //   // console.log('been invoked');
 // });
 
-const port = 3002;
+const port = 3000;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`);
