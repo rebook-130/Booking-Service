@@ -8,10 +8,10 @@ const app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-app.get('/api/room/:roomId/calendar/', (req, res) => {
-  const { roomId } = req.params;
-  console.log(`${roomId}`);
-  db.getRoomReservations(roomId, (err, result) => {
+app.get('/api/room/calendar/', (req, res) => {
+  const { roomID } = req.query;
+  //console.log(`${roomId}`);
+  db.getRoomReservations(roomID, (err, result) => {
     if (err) {
       res.status(400).send(err);
     }
@@ -20,7 +20,8 @@ app.get('/api/room/:roomId/calendar/', (req, res) => {
 });
 
 app.post('/api/room/calendar', (req, res) => {
-  db.createReservation((err, result) => {
+  const { roomID } = req.query;
+  db.createReservation(roomID, (err, result) => {
     if (err) {
       res.status(400).send(err);
     }
