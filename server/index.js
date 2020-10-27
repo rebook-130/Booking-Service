@@ -9,8 +9,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
 app.get('/api/room/calendar/', (req, res) => {
-  const { roomID } = req.query;
-  console.log(roomID);
+  const { roomID } = req.body;
   db.getRoomReservations(roomID, (err, result) => {
     if (err) {
       res.status(400).send(err);
@@ -28,17 +27,6 @@ app.post('/api/room/calendar', (req, res) => {
     res.status(201).send();
   });
 });
-
-// app.get('/api/room/calendar', (req, res) => {
-//   console.log('app.get was invoked');
-//   db.get('2', req.query.month, (err, result) => res.status(200).send(result));
-
-// });
-// app.get('/api/room/:roomId/calendar/:month', (req, res) => {
-//   const { roomId, month } = req.params;
-//   db.get(roomId, month, (err, result) => res.status(200).send(result));
-//   // console.log('been invoked');
-// });
 
 const port = 3000;
 
