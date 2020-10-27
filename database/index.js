@@ -1,65 +1,44 @@
-const mongoose = require('mongoose');
+const { Client } = require('pg');
 
-// Uncomment for localhost
-mongoose.connect('mongodb://localhost/calendar');
-// Uncomment for Proxy use
-// mongoose.connect('mongodb://database/calendar');
+const config = { database: 'rebook' };
+const client = new Client(config);
 
-const calendarSchema = mongoose.Schema({
-  roomId: String,
-  date: String,
-  month: Number,
-  day: Number,
-  price: Number,
-  maxGuest: Number,
-  cleaningFee: Number,
-  taxes: Number,
-  rating: Number,
-  booked: Boolean,
+client.connect(err => {
+  if (err) {
+    console.error('connection error', err.stack);
+  } else {
+    console.log('connected!');
+  }
 });
 
-const Calendar = mongoose.model('Calendar', calendarSchema);
-
-const save = (singleDate) => {
-  // console.log(repos);
-  // console.log(repos[0].name, repos[0].owner.login, repos[0].url, repos[0].watchers_count, repos[0].forks_count);
-
-  const add = new Calendar({
-    roomId: singleDate.roomId,
-    date: singleDate.date,
-    month: singleDate.month,
-    day: singleDate.day,
-    price: singleDate.price,
-    maxGuest: singleDate.maxGuest,
-    cleaningFee: singleDate.cleaningFee,
-    taxes: singleDate.taxes,
-    rating: singleDate.rating,
-    booked: singleDate.booked,
-  });
-
-  add.save((err) => {
-    console.log(err);
-    // Calendar.deleteMany({}, (err)=>{console.log(err)});  // <- here the wa to clean the data base
-    // Calendar.find({}).exec((err,result)=>{ console.log(result) })
+const getRoomReservations = (roomID, cb) => {
+  // Get all reservations from a room
+  const query = `SELECT * FROM reservations WHERE room_id=${roomID}`;
+  client.query(query, (err, res) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null, res);
+    }
   });
 };
 
-const postThis = (document) => {
-  Calendar.insert(document);
+const createReservation = (roomID, userID, callback) => {
+  // ATM some of these values are hardcoded this will change in a later update.
+  const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+  // Create a reservation
+  const query = `INSERT INTO reservations (room_id, user_id, check_in, check_out, guests) VALUES (${roomID}, ${userID}, 'Mon Jan ${randomInt(1, 15)} 2021 04:50:43 GMT-0800 (Pacific Standard Time)', 'Wed Jan ${randomInt(16, 31)} 2021 04:02:23 GMT-0700 (Pacific Daylight Time)', 2)`;
+  client.query(query, (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, data);
+    }
+  });
 };
 
-const get = (roomId, month, cb) => {
-  // How should I get the month before and the month after ?
-  // I need to get 3 months worth of data
-  Calendar.find({ 'roomId': roomId, 'month': month}).exec((err, result) => { cb(err, result); });
-  // Calendar.find({ 'roomId': roomId, 'date': date}).exec((err, result) => { cb(err, result); });
+module.exports = {
+  client,
+  getRoomReservations,
+  createReservation,
 };
-
-const deleteAll = () => {
-  Calendar.deleteMany({}, (err) => { console.log(err); }); // <- here the wa to clean the data base
-};
-
-module.exports.save = save;
-module.exports.get = get;
-module.exports.delete = deleteAll;
-module.exports.postThis = postThis;

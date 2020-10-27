@@ -3,6 +3,8 @@ const faker = require('faker');
 const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 
+// https://day.js.org/docs/en/manipulate/add
+
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 const reservationMaker = () => {

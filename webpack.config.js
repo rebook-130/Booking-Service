@@ -11,6 +11,8 @@ module.exports = {
     rules: [
       {
         test: /\.jsx$/,
+        // Added my Emmanuel Oct 26th
+        exclude: /node_modules/,
         loaders: 'babel-loader',
       },
       {
