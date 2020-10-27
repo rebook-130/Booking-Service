@@ -1,6 +1,6 @@
 require('newrelic');
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.get('/api/room/calendar/', (req, res) => {
   const { roomID } = req.query;
-  //console.log(`${roomId}`);
+  console.log(roomID);
   db.getRoomReservations(roomID, (err, result) => {
     if (err) {
       res.status(400).send(err);
@@ -20,12 +20,12 @@ app.get('/api/room/calendar/', (req, res) => {
 });
 
 app.post('/api/room/calendar', (req, res) => {
-  const { roomID } = req.query;
-  db.createReservation(roomID, (err, result) => {
+  const { roomID, userID } = req.body;
+  db.createReservation(roomID, userID, (err, result) => {
     if (err) {
       res.status(400).send(err);
     }
-    res.status(200).send();
+    res.status(201).send();
   });
 });
 
