@@ -5,13 +5,17 @@ const writer = csvWriter();
 
 // https://day.js.org/docs/en/manipulate/add
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
-
 const reservationMaker = () => {
-  writer.pipe(fs.createWriteStream('reservations.csv'));
+  writer.pipe(fs.createWriteStream('reservations_2.csv'));
+  const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+  // const day = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+  // const inDay = randomInt(1, 15);
+  // const outDay = randomInt(16, 31);
+
+  const year = 2021;
   let count = 1;
   let roomCount = 1;
-  for (var i = 1; i < 30000001; i++) {
+  for (let i = 1; i < 30000001; i += 1) {
     writer.write(
       {
         room_id: `${roomCount}`,
@@ -21,7 +25,7 @@ const reservationMaker = () => {
         guests: randomInt(1, 5),
       },
     );
-    count++;
+    count += 1;
     if (count === 3) {
       roomCount += 1;
       count = 1;
