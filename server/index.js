@@ -19,8 +19,7 @@ app.get('/api/room/calendar/', (req, res) => {
 });
 
 app.post('/api/room/calendar', (req, res) => {
-  const { roomID, userID } = req.body;
-  db.createReservation(roomID, userID, (err, result) => {
+  db.createReservation(req.body, (err, result) => {
     if (err) {
       res.status(400).send(err);
     }
