@@ -25,13 +25,13 @@ class Base extends React.Component {
     const month = date.getMonth();
     const self = this;
     console.log(`/api/room/calendar?month=${month}`);
-    axios.get(`/api/room/calendar?month=${month}`)
-      .then((response) => {
-        self.setState({ data: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios.get(`/api/room/calendar?month=${month}`)
+    //   .then((response) => {
+    //     self.setState({ data: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   render() {

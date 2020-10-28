@@ -17,12 +17,12 @@ class Month extends React.Component {
       console.log(date, '<--- Date from Month.js componentDidUpdate');
       var month = date.getMonth() + this.props.currentMonth;
       console.log(month);
-      $.ajax({
-        method: 'GET',
-        url: '/api/room/calendar?month=' + month,
-        success: result => this.setState({ data: result })
-      });
-    }
+    //   $.ajax({
+    //     method: 'GET',
+    //     url: '/api/room/calendar?month=' + month,
+    //     success: result => this.setState({ data: result })
+    //   });
+     }
   }
 
   componentDidMount() {
@@ -30,11 +30,11 @@ class Month extends React.Component {
     console.log(date, '<--- Date from Month.js componentDidMount');
     var month = date.getMonth() + this.props.currentMonth;
     console.log(month);
-    $.ajax({
-      method: 'GET',
-      url: '/api/room/calendar?month=' + month,
-      success: result => this.setState({ data: result })
-    });
+    // $.ajax({
+    //   method: 'GET',
+    //   url: '/api/room/calendar?month=' + month,
+    //   success: result => this.setState({ data: result })
+    // });
   }
   render() {
     if (this.props.from !== undefined) {
