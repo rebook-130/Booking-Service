@@ -33,3 +33,9 @@ FROM '/Users/ufo/dev/SDC/booking-service/database/post/postUser.csv' DELIMITERS 
 -- reservations
 COPY reservations (room_id, user_id, check_in, check_out, guests)
 FROM '/Users/ufo/dev/SDC/booking-service/database/post/reservations.csv' DELIMITERS ',' CSV header;
+
+COPY rooms (room_name room_location,max_guest, price)
+FROM '/Users/ufo/dev/SDC/booking-service/database/post/postRoom.csv' DELIMITERS ',' CSV header;
+
+COPY rooms (room_name, room_location,max_guest, price)
+FROM '/home/ubuntu/postRoom.csv' DELIMITERS ',' CSV header;
