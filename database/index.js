@@ -1,10 +1,10 @@
 const { Client } = require('pg');
 
 const credentials = {
-  // host: '35.170.249.128',
-  // port: 5432,
-  // user: 'postgres',
-  // password: 'hr',
+  host: '35.170.249.128',
+  port: 5432,
+  user: 'postgres',
+  password: 'hr',
   database: 'rebook',
   max: 20,
   idleTimeoutMillis: 30000,
