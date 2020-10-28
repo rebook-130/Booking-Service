@@ -5,7 +5,7 @@
   "author": "",
   "license": "",
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=12.18.2"
   },
   "scripts": {
     "build-prod": "webpack",
