@@ -7,7 +7,7 @@ const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 const userMaker = () => {
   writer.pipe(fs.createWriteStream('postUser.csv'));
-  for (var i = 0; i < 10000; i++) {
+  for (var i = 0; i < 10000000; i++) {
     writer.write(
       {
         user_name: `${faker.name.firstName()}${faker.name.lastName()}`,
