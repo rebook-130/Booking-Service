@@ -1,7 +1,17 @@
 const { Client } = require('pg');
 
-const config = { database: 'rebook' };
-const client = new Client(config);
+const credentials = {
+  // host: '35.170.249.128',
+  // port: 5432,
+  // user: 'postgres',
+  // password: 'hr',
+  database: 'rebook',
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+};
+
+const client = new Client(credentials);
 
 client.connect(err => {
   if (err) {

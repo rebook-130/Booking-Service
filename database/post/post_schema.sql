@@ -30,9 +30,15 @@ CREATE TABLE reservations (
 
 COPY users (user_name,email)
 FROM '/Users/ufo/dev/SDC/booking-service/database/post/postUser.csv' DELIMITERS ',' CSV header;
+
+COPY users (user_name,email)
+FROM '/home/ubuntu/postUser.csv' DELIMITERS ',' CSV header;
 -- reservations
 COPY reservations (room_id, user_id, check_in, check_out, guests)
-FROM '/Users/ufo/dev/SDC/booking-service/database/post/reservations.csv' DELIMITERS ',' CSV header;
+FROM '/Users/ufo/dev/SDC/booking-service/database/post/postReservations.csv' DELIMITERS ',' CSV header;
+
+COPY reservations (room_id, user_id, check_in, check_out, guests)
+FROM '/home/ubuntu/postReservations.csv' DELIMITERS ',' CSV header;
 
 COPY rooms (room_name room_location,max_guest, price)
 FROM '/Users/ufo/dev/SDC/booking-service/database/post/postRoom.csv' DELIMITERS ',' CSV header;
