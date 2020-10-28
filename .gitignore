@@ -31,4 +31,4 @@ package-lock.json
 #keys
 newrelic.js
 *.pem
-.zip
+*.zip
